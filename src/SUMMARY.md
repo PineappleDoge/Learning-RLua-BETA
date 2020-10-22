@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](./ch00-00-introduction.md)
+- [Introduction](#Introduction)
 - [Common Programming Concepts](./ch01-00-common-programming-concepts.md)
   - [Variables](./ch01-01-variables.md)
   - [Data Types](./ch01-02-data-types.md)
