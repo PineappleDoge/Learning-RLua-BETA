@@ -16,6 +16,7 @@ get_files:
 	make create_src
 	
 	mv ./Learning-RLua/src/* ./src/
+	rm -f ./src/SUMMARY.md
 	
 	make clean_git
 
