@@ -1,0 +1,6 @@
+[book]
+authors = ["Soviet Kitsune"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Learning RLua"
