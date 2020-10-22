@@ -1,6 +1,6 @@
 # Introduction
 
-Hi, just before you get to reading, we want to thank you for giving Learning RLua a chance!  This book is intended to be an introduction to **RLua**, a Roblox *Modified* version of Lua. It is meant to go over basic scripting paradigms that RLua has, along with other basic ideas, such as events, services, and objects. We’re going to be supplementing this book with exercises, Q&A, and Quizzes.
+Hi, just before you get to reading, we want to thank you for giving Learning RLua a chance! This book is intended to be an introduction to **RLua**, a Roblox _Modified_ version of Lua. It is meant to go over basic scripting paradigms that RLua has, along with other basic ideas, such as events, services, and objects. We’re going to be supplementing this book with exercises, Q&A, and Quizzes.
 
 As Roblox is a constantly evolving engine, certain services and methods might become **deprecated**, or otherwise outdated. We recommend staying up to date by looking at the official Roblox Developer hub. (<https://developer.roblox.com/en-us/>)
 
@@ -10,6 +10,6 @@ As a note, this book isn’t meant to be a comprehensive guide about every servi
 
 This book was written and reviewed by multiple people! If you like the book, go thank these guys for dedicating time!
 
-* PineappleDoge - Writer for Chapter 0, Table of Context, and Chapter 1
-* Windsake - Reviewer for Chapter 0, Table of Context, and Chapter 1
-* InsertUsernameHere - Reviewer for Chapter 0, Table of Context, and Chapter 1
+- PineappleDoge - Writer for Chapter 0, Table of Context, and Chapter 1
+- Windsake - Reviewer for Chapter 0, Table of Context, and Chapter 1
+- InsertUsernameHere - Reviewer for Chapter 0, Table of Context, and Chapter 1

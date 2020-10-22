@@ -42,11 +42,11 @@ local data1 = 0
 
 There are also some characters you can't have outright in a variable name.
 
-* Brackets ( ), { }, [ ], < >
-* Operators * + - /
-* Special characters @ # $ % ^ & ! ` ~ = , ? ' " ; :
+- Brackets ( ), { }, [ ], < >
+- Operators \* + - /
+- Special characters @ # \$ % ^ & ! ` ~ = , ? ' " ; :
 
-*Technically* you can have these as variables by using some "illegal" techniques.
+_Technically_ you can have these as variables by using some "illegal" techniques.
 
 ### Practices
 
