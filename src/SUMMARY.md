@@ -7,3 +7,12 @@
   - [Comments](./ch01-03-comments.md)
   - [Operators](./ch01-04-operators.md)
   - [Control Flow](./ch01-05-control-flow.md)
+  - [Functions](./ch01-06-functions.md)
+  - [Loops](./ch01-07-loops.md)
+  - [Number guessing game](./ch01-08-number-guessing-game.md)
+
+---
+
+- [Solutions](./ch00-01-solutions.md)
+  - [Functions](./sol01-06-functions.md)
+  - [Number guessing game](sol01-08-number-guessing-game.md)

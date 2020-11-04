@@ -76,3 +76,53 @@ end
 Notice how we only start off with one if statement, and the rest chain off into elseif branches? This is especially useful for when we want to check for 2+ values, but don’t want to messy up our code by writing separate if-statements to check 1 value at a time.
 
 We can also do this with those logical operators.
+
+Control flow is more about if statements like stated before. We have other "blocks" like do blocks.
+
+```lua
+do
+  print("Hi")
+end
+```
+
+This is since all blocks are in their own scope. Lets take a look at the example from [variables global vs local](./ch01-01-variables.md#global-vs-local) Specifically this example.
+
+```lua
+do
+  local data = 5
+end
+
+print(data)
+```
+
+When we ran this we got `nil` in the output. This is due to the scope.
+
+```lua
+-- Global scope
+do
+  -- Local scope
+  local data = 5
+end
+
+print(data)
+```
+
+You can think of scopes as a pyramid, whatever is at the bottom can see the top but the top can't see the bottom.
+
+If a variable makes a change to the upper scope, then it will be able to see it.
+
+```lua
+local data = 0
+
+do
+  data = 5
+end
+
+print(data)
+```
+
+What we get in the output is `5` since `data` was changed to `5`.
+
+Now like said in the variables example, removing the local will make it accessible to the outside scope.
+
+This is since without local, it defines the variable in the global scope and not the local scope. Now you see why its called `local`.

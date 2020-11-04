@@ -10,6 +10,7 @@ As a note, this book isn’t meant to be a comprehensive guide about every servi
 
 This book was written and reviewed by multiple people! If you like the book, go thank these guys for dedicating time!
 
-- PineappleDoge - Writer for Chapter 0, Table of Context, and Chapter 1
-- Windsake - Reviewer for Chapter 0, Table of Context, and Chapter 1
-- InsertUsernameHere - Reviewer for Chapter 0, Table of Context, and Chapter 1
+- PineappleDoge - Writer for Chapter 0, and Chapter 1
+- SovietKitsune - Writer for Chapter 1
+- Windsake - Reviewer for Chapter 0, and Chapter 1
+- InsertUsernameHere - Reviewer for Chapter 0, and Chapter 1

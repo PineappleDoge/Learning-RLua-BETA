@@ -1,6 +1,9 @@
 [book]
-authors = ["Soviet Kitsune"]
+authors = ["Soviet Kitsune", "PineappleDoge"]
 language = "en"
 multilingual = false
 src = "src"
 title = "Learning RLua"
+
+[output.html.playground]
+editable = true
