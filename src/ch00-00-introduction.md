@@ -10,7 +10,23 @@ As a note, this book isn’t meant to be a comprehensive guide about every servi
 
 This book was written and reviewed by multiple people! If you like the book, go thank these guys for dedicating time!
 
-- PineappleDoge - Writer for Chapter 0, and Chapter 1
-- SovietKitsune - Writer for Chapter 1
+- PineappleDoge - Writer for Chapter 0, Chapter 1, and Chapter 2
+- SovietKitsune - Writer for Chapter 1, and Chapter 2
 - Windsake - Reviewer for Chapter 0, and Chapter 1
 - InsertUsernameHere - Reviewer for Chapter 0, and Chapter 1
+- InedibleGames - Reviewer for Chapter 0 and Chapter 1, grammar correction
+
+## Resources
+
+After reading the book, you should be fluent enough in RLua to understand basic errors, so there's a lot of resources and websites you can use to help yourself fix errors! 
+Here are a few websites and techinques that we recommend if you have an issue! 
+
+**Scripting Helpers** - A RLua based website that allows you to make an account and ask for help! If you have a scripting issue, it's always a good idea to look it up here since there's a good chance another person might have the same question as you.
+
+**Roblox Devforums** - A website managed by Roblox themselves. Asking for help here or searching if someone had the same issue as you is always a good idea, and a good last resort is to just post in the appropiate help channel.
+
+**Roblox Developer Hub** - A site that's managed by Roblox themselves. Documents all API for every Roblox service, instance, and object. Useful to double check all properties and methods an object may have. 
+
+## End of Introduction
+
+That's enough talking from us though, we hope you enjoy the book!
