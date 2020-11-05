@@ -26,9 +26,9 @@ These 4 types plus 3 more complex types make up _almost_ everything.
 - Boolean
   - This data type represents `true` or `false` and uses the keywords `true` and `false`
 - Nil
-  - This data type represents nothing. By default everything has this data type
+  - This data type represents nothing. It's important to understand that this datatype is attached to things that don't have data. 
 
-Now with some more data types we can bring up the "lose" typed nature of RLua. What this means is a number can become a string.
+An thing to note is that Lua is a loosely typed 
 
 ```lua
 local foo = 0
@@ -107,9 +107,7 @@ correct
 ]]
 ```
 
-Only the `[[ ]]` method will work, all the other ones will say something along the lines of `unfinished string near '"'`.
-
-You can also combine strings together.
+Only the `[[ ]]` method will work, all the other ones will say something along the lines of `unfinished string near '"'`. You can also combine strings together.
 
 ```lua
 local str1 = "Hello, "
@@ -118,21 +116,17 @@ local str2 = "World!"
 local str3 = str1 .. str2
 ```
 
-What `..` means is to combine these 2 strings together.
-
-There are more to strings which you can read at <https://developer.roblox.com/en-us/api-reference/lua-docs/string>.
+`..`, otherwise known as concatenation, is an operator which can be used to connect two strings together. There are more to strings which you can read at <https://developer.roblox.com/en-us/api-reference/lua-docs/string>.
 
 ## Number
 
-Numbers are also one of the most important data types within RLua.
-
-You can use our favorite subject with numbers, math.
+Numbers are also one of the most important data types within RLua. You can use our favorite subject with numbers, math.
 
 ```lua
 local num = 5 + 3
 ```
 
-Of course, your not afraid of pure numbers. You are afraid of letters in math so, using variables we can allow that fun.
+Of course, your not afraid of pure numbers. You're afraid of letters in math so, using variables we can allow that fun.
 
 ```lua
 local a = 6
@@ -158,9 +152,7 @@ local x = 5 * 2 + 2
 local y = 5 * (2 + 2)
 ```
 
-The values of `x` and `y` are different because of the order of operations.
-
-There is much more you can do with numbers and you can check the [standard math library](https://developer.roblox.com/en-us/api-reference/lua-docs/math)
+The values of `x` and `y` are different because of the order of operations. There is much more you can do with numbers and you can check the [standard math library](https://developer.roblox.com/en-us/api-reference/lua-docs/math)
 
 ## Booleans
 
@@ -171,9 +163,7 @@ local trueBool = true
 local falseBool = false
 ```
 
-Booleans are commonly used within if statements which will be covered in [control flow](./ch01-05-control-flow.md)
-
-All operators return booleans, think of things like `>` and `==`
+Booleans are commonly used within if statements which will be covered in [control flow](./ch01-05-control-flow.md). All operators return booleans, think of things like `>` and `==`
 
 ## Type interaction
 
@@ -195,20 +185,14 @@ local num = 2
 local combo = str + num
 ```
 
-This would cause an error along the lines of `attempt to perform arithmetic on a string value`.
-
-Something like this happens whenever you try to add 2 things together which are not number.
+This would cause an error along the lines of `attempt to perform arithmetic on a string value`. Something like this happens whenever you try to add 2 things together which are not number.
 
 ## Type casting
 
-You heard of the some functions like `tonumber` and possibly `tostring`. This is called explicit type casting. Its explicit as you have to write these functions.
-
-Lua also has **implicit** type casting. For example, the `"1" + 2` was implicit. We didn't have to tell Lua to convert the string to a number.
-
-Some more examples would be concatting a string and number.
+You heard of the some functions like `tonumber` and possibly `tostring`. This is called explicit type casting. Its explicit as you have to write these functions. Lua also has **implicit** type casting. For example, the `"1" + 2` was implicit. We didn't have to tell Lua to convert the string to a number. Some more examples would be concatting a string and number.
 
 ```lua
 local combo = "Hello I am " .. 100 .. " years old!"
 ```
 
-The value of `combo` would be `"Hello I am 100 years old!"`.
+The output would be `Hello I am " .. 100 .. " years old"!`
