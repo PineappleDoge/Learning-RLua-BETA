@@ -1,8 +1,8 @@
 # Loops
 
-Loops are ways of repeating code without having to copy and paste the code.
+In programming, it's very often that we'll want to repeat code. Whether it's repeating the same code to a lot of objects, or just repeating code until something happens, we'll want to familiarize ourselfs with the concepts of `loops`.
 
-In RLua, there are 3 types of loops, `while`, `for`, and `repeat` loops.
+In RLua, there are 3 types of loops, `while`, `for`, and `repeat` loops. Each of these loops has varying uses, but they all allow you to repeat code
 
 Technically there is the `recursion` loop we found within [functions](./ch01-06-functions.md) chapter.
 
