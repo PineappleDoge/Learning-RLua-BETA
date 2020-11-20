@@ -1,7 +1,10 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages. I think</p>
-</body>
-</html>
+{{ partial "header.html" . }}
+	<main>
+        {{ .Content }}
+        {{ range .Paginator.Pages }}
+			{{ partial "summary.html" . }}
+		{{ end }}
+		{{ partial "pagination.html" . }}
+	</main>
+{{ partial "sidebar.html" . }}
+{{ partial "footer.html" . }}
