@@ -4,4 +4,4 @@ In this chapter, we'll cover fundamental concepts that almost every **practical*
 
 In this chapter, you can expect us to go over variables, the basic (primitive) types, functions, comments and control flow. These are the fundamental building blocks that you'll need to understand in order to understand the rest of this book, so we strongly recommend coming back to these chapters and trying to understand them. These chapters will try to cover as much information as possible, so as you go through the book, there's a strong informational chapter that you can reference back to. 
 
-Now that this note is out of the way, let's continue to Chapter 1.1: Variables!
+Now that this note is out of the way, let's continue to the next chapter, Variables!

@@ -2,15 +2,9 @@
 
 In programming, it's very often that we'll want to repeat code. Whether it's repeating the same code to a lot of objects, or just repeating code until something happens, we'll want to familiarize ourselfs with the concepts of `loops`.
 
-In RLua, there are 3 types of loops, `while`, `for`, and `repeat` loops. Each of these loops has varying uses, but they all allow you to repeat code
+In RLua, there are 3 types of loops, `while`, `for`, and `repeat` loops. Each of these loops has varying uses, but they all allow you to repeat sections of code. Technically there is the `recursion` loop we found within [functions](./ch01-06-functions.md) chapter.
 
-Technically there is the `recursion` loop we found within [functions](./ch01-06-functions.md) chapter.
-
-Here is a quick example of all of the loops.
-
----
-
-While loop
+To start off, we'll go over the while loop. The while loop is structured like below.
 
 ```lua
 local x = 0
@@ -21,7 +15,23 @@ while x < 10 do
 end
 ```
 
-For loop
+With while loops, they're structured in a way that sort of references if-statements. The important part to note about while loops is the conditional. In this while loop, the conditional is `x < 10`. Until this condition is invalid, all the code between the initial `while ___ do` and the `end` will be repeated. This loop will run 10 times before breaking due to the condition no longer being valid. What if we want to end our loop early though?
+
+```lua
+local x = 0
+
+while true do
+  x = x + 1
+  print(x)
+
+  if x == 5 then 
+    break
+  end
+
+end
+```
+
+Notice anything different? We're introducing a new keyword, `break`! The break keyword can break any loop as soon as it's called, effectively terminating loops as soon as you want. This is useful for when 
 
 ```lua
 for x = 1, 10 do

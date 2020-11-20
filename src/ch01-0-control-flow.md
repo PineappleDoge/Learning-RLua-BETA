@@ -1,6 +1,6 @@
 # Control Flow
 
-What if you need to compare something? What if you need to make sure that a mob drops loot after they die? What about making sure that a player has enough money to buy a sweet new item from the store? We learned about variable types and how to manipulate them, but how do we actually check and do stuff?
+What if you need to compare something? What if you need to make sure that a mob drops loot after they die? What about making sure that a player has enough money to buy a sweet new item from the store? We learned about variable types and how to manipulate them, but how do we actually check these and tell our code what to do incase of each circumstance?
 
 Lucky for us, RLua comes with a convenient set of conventional statements. Statements in programming allow us to execute code depending on a **condition’s return value**.
 
