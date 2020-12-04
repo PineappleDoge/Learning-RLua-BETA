@@ -46,7 +46,17 @@ end
 print(globalVariable)
 ```
 
-Once again, this'll be explained more in a different chapter, but we'll go over a basic idea of scope. A scope is the context of a program in which variables can be accessed, used, or validated. Scopes can be separated by functions, while statements, do-end statements, and if-statements. When a variable is in a different scope, and is considered local, it cannot be accessed by scopes different from it.
+Once again, this'll be explained more in the next chapter, [datatypes](./chapter_12_Datatypes) but we'll go over a basic idea of scope. A scope is the context of a program in which variables can be accessed, used, or validated. Scopes can be defined by functions, while statements, do-end statements, and if-statements. Local variables are similar to global variables, except for the fundamental difference in **scope**. Local variables are limited to the scope that they'll defined in, and can't be accessed by any other scope.
+
+```lua
+do
+  local data = 5
+end
+
+print(data)
+```
+
+In the example above, the output is `nil`, but why? This is because of the scope that they're created in. In the beginning of the script, we create a new scope by typing `do`, and close that scope off with `end`. While the data variable is defined in that scope, the print statement isn't, so the print statement doesn't know what data is, and defaults to nil. To further explain the output, `nil` is a datatype that represents the lack of data. Sounds confusing? This'll be explained more in the next chapter, [datatypes](./chapter_12_Datatypes.md).
 
 
 
@@ -73,40 +83,6 @@ local PrUsr = "Username_0001" -- Not a good example...
 
 
 
-> #### Side note
-
-> There is a difference between the Lua standard library and the Roblox standard library.
-> The Roblox standard library is quite large as it contains things like input, monization, and other Quality-Of-Life (QOL) functions.
-> The entire Roblox standard library can be found at <https://developer.roblox.com/en-us/api-reference>
-
-Click `Run` or `Play` and open the [console](https://developer.roblox.com/en-us/articles/Developer-Console). The expected console output would be 5, or something along those lines
-
-```log
-5
-```
-
-Now that we've established global variables and how they work, we should describe local variables. Local variables are similar to global variables, except for the fundamental difference in **scope**. Local variables are limited to the scope that they'll defined in, and can't be accessed by any other scope.
-
-```lua
-do
-  local data = 5
-end
-
-print(data)
-```
-
-In the example above, the output is `nil`, but why? This is because of the scope that they're created in. In the beginning of the script, we create a new scope by typing `do`, and close that scope off with `end`. While the data variable is defined in that scope, the print statement isn't, so the print statement doesn't know what data is, and defaults to nil.
-
-```log
-nil
-```
-
-You get `nil`, you may ask, what is nil? Nil basically means nothing, this will be explained more in [data types](./ch01-02-data-types.md). Now, the question is, why did you get `nil`. This is since of the box of `do` and `local`. Since of this, its considered good practice to use `local` to prefix your variables.
-
-
-
-
-
 ## Mutability
 
 All variables in RLua are mutable by default and without using [metatables](https://www.lua.org/pil/13.html). By being mutable, we can change the value of a variable at any time after the variables been defined. In the example below, we create a local variable called data, and then change it later on in the script.
@@ -118,3 +94,28 @@ data = 3
 ```
 
 If you're reading the code, you might notice how `data = 3` is kind of like defining a global variable. A very important thing to understand is that when doing checks like this, RLua checks if there's a pre-existing variable with the same name. If a variable is found, it'll use that variable to apply changes, otherwise it'll create a new variable. 
+
+
+
+
+
+## Comments 
+
+You've probably noticed the usage of comments throughout the chapter, so let's quickly go over what comments do. Comments, as the name suggest, allow you to document your code in the script file. Like any other language, comments are parsed, or ran throughout the code, so you don't need to worry about comments having an effect on the code you right. Comments are very useful for documenting code, which can come in handy when working with others/looking at old code. Comments can be constructed in a singleline or multiline format. 
+
+```lua
+-- This is a singleline comment. See how it stays on one line
+--[[ 
+  This is a multiline comment.
+  Notice how it spreads through separate lines?
+]]
+``` 
+
+Comments can be amazing, although too many can actually reduce readability. As a rule of thumb, don't comment redundantly, and don't comment too often unless you're willing to keep the comments updated as the code gets updated.
+
+```lua
+local x = 5 -- sets value of x to 5
+-- ^^ Above is a bad comment, reading the variable name tells us this already
+```
+
+In short, don't overcomment code. Use comments sparingly, and use them where they'll have the most effect. In the next chapter, we'll take a more in-depth look at [datatypes](./chapter_12_Datatypes.md)
