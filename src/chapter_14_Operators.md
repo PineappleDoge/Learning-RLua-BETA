@@ -81,7 +81,7 @@ print(5 >= 5) -- true
 print(3 <= 2) -- false
 ```
 
-You may ask, what are these used for? These are used for comparisons and commonly used within if statements.
+You may ask, what are these used for? Relational operators are most commonly used to check the relationship between two operations. These are most commonly seen in if-statements
 
 
 
