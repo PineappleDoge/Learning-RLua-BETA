@@ -1,8 +1,14 @@
 # Operators
 
+As discussed in [Control Flow](./chapter_13_Control_Flow.md), RLua has a lot of operators. Like any programming language, RLua allows you to conduct operations on datatypes. We can use operators in a variety of ways, including to compare, contrast, and connecting datatypes. In the rest of this chapter, we'll take a bit more time to properly discuss operators.
+
+
+
+
+
 ## Mathematical Operations
 
-Like any programming language, RLua allows you to perform mathematical operations on numbers. Simply said, You can add, subtract, multiply, divide, and do other math operations to numerical values. The most basic math operations in lua are multiplication, division, addition, and subtraction. To visualize this in code, I prepared some sample code to represent.
+Like any programming language, RLua allows you to perform mathematical operations on numbers. Simply said, You can add, subtract, multiply, divide, and do other math operations to numerical values. The most basic math operations in lua are multiplication, division, addition, and subtraction. To visualize this in code, I prepared code samples.
 
 There are more advanced mathematical operations in RLua, but these are the core visualizations that are meant to show how it would be represented in code, rather than going over all possibilities.
 
@@ -36,12 +42,14 @@ local partZ = 4
 
 partX = partX * 2
 partY = partY * 3
-partY = partY * 1.5
+partZ = partZ * 1.5
 ```
 
-The part would be moved in this imaginary sandbox. Like stated before, this section is for general programming concepts.
+The part would be moved in this imaginary sandbox. Like stated before, this section is for general programming concepts, which means things like part Instances are not going to be talked about.
 
-This means things like Instances are not going to be talked about.
+
+
+
 
 ## Relational Operations
 
@@ -74,6 +82,10 @@ print(3 <= 2) -- false
 ```
 
 You may ask, what are these used for? These are used for comparisons and commonly used within if statements.
+
+
+
+
 
 ## Logical operators
 
