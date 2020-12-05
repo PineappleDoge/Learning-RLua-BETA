@@ -99,4 +99,64 @@ function AddAndSubtractNumbers(number1, number2)
     return Sum, Difference
 end
 
-local
+local Sum, Diference = AddAndSubtractNumbers(8, 6)
+print(Sum, Difference)
+```
+
+
+
+
+
+## Recursion
+
+Ever tried to run a function in a function? That doesn't sound too weird, right? What if that function was the same function you were typing? Confused? You know the drill, here's an example! 
+
+```lua
+function Recursion()
+    print("Ran")
+    Recursion()
+end
+
+Recursion()
+```
+
+Surprisingly, that works! It'll continue to run the function until a `stack overflow` happens, which basically means that you're running too many functions too quickly.
+
+
+
+
+
+## Functions & Events
+
+Just like how we can call functions manually, we can also call functions when an event is triggered. We won't go into too much detail about events and listeners, that's saved for a future chapter. We can automate the handling of events by attaching a "listener" function which listens for whenever the event is fired, and preceeds to run code. It's important to know that parameters and arguments still work here, and some built-in events can pass arguments automatically.
+
+In our example below, we make use of `:Connect` to connect a function to the `PlayerAdded` event, so that the function will run everytime the event is fired.
+
+```lua
+local Players = game:GetService("Players") -- allows us to get the PlayerAdded event
+
+function OnPlayerAdded(player) -- this parameter is automatically passed by the PlayerAdded event.
+    print(player.Name .. " has joined the game!")
+end
+
+Players.PlayerAdded:Connect(OnPlayerAdded)
+```
+
+
+
+
+
+## Anonymous Functions
+
+Sometimes, we don't need to define a name with our functions. This is called an `Anonymous Function`, and we can make the most use of this within events or other functions. To visualize, here's our PlayerAdded event, but with an anonymous function attached to it.
+
+```lua
+local Players = game:GetService("Players") -- allows us to get the PlayerAdded event
+
+Players.PlayerAdded:Connect(function(player) -- we can still get parameters from anonymous functions!
+    print(player.Name .. " has joined the game!")
+end) 
+```
+
+
+Functions are extremely useful, but what about repeating code? In the next chapter, we'll cover [loops](./chapter_22_Loops.md). While there's varying types of loops, all of them repeat code.
