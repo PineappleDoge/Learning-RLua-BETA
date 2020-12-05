@@ -24,6 +24,6 @@
 ---
 ---
 
-- [Solutions](./chapter_03_solutions.md)
+- [Solutions](./chapter-03-Solutions.md)
 --
   - [2.1-2.4 Solutions](./solution-chapter_15_review.md)
