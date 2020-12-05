@@ -7,14 +7,14 @@ test_pdf_making:
 	
 .PHONY: get_and_update_files clean_pdf_and_src clean_git create_src clean_src
 clean_git:
-	rm -rf ./Learning-RLua/
+	rm -rf ./Learning_RLua/
 	
 get_and_update_files:
-	git clone git@github.com:Roblox-Developers-CodeSkids/Learning-RLua.git
+	sudo git clone https://github.com/PineappleDoge/Learning_RLua.git
 	
 	make create_src
 	
-	mv ./Learning-RLua/src/* ./src/
+	mv ./Learning_RLua/src/* ./src/
 	rm -f ./src/SUMMARY.md
 	
 	make clean_git
