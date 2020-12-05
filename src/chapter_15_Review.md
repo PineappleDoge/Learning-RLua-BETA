@@ -14,8 +14,25 @@ Q1: What is a variable?
 - C: Something used to document code
 
 Q2: What's the purpose of comments?
-- A: To document code
+- A: To store data
 - B: To troubleshoot code and sliently handle errors
-- C: To store data 
+- C: To document code 
 
-Q3: 
+Q3: What does nil represent?
+- A: The lack of a value
+- B: 0
+- C: An error
+
+Q4: How are multiline strings formed?
+- A: `"text `
+`here"`
+- B: `[[text` 
+`here]]`
+- C: `'So then he said "Wow, this\'`
+`ll work too!"'`
+
+Q5: How would we check 3+ conditions in an if-statement?
+- A: elseif
+- B: else
+- C: All of the above
+
