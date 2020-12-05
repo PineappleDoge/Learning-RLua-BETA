@@ -9,7 +9,7 @@ In this chapter, we'll be taking a deeper dive into what we've learned from the 
 ## Q&A Segment
 
 Q1: What is a variable?
-- A: A custom that can contain data.
+- A: A named container used to store data.
 - B: A datatype
 - C: Something used to document code
 

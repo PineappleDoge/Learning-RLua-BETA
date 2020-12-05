@@ -59,4 +59,39 @@ end
 print("While loop ended, continuing on with the rest of the script!")
 ```
 
-You'll notice how the second print statement now runs, 
+You'll notice how the second print statement now runs, that's because of our if-statement at the top of the loop, which checks if Number is greater or equal to 10. If it is, we break the current while-loop and proceed with the rest of our code. 
+
+
+
+
+
+## For loops
+
+For loops are similar to while loops, in the sense that they repeat code. The fundamental difference between these two loops is the application that they're used in. While loops can be used to repeat code until a condition is met, while for loops allow you to run commands or a group of commands a set amount of times. 
+
+All for loops have a control variable, start, end, and an optional incremental value. In the example below, the count is
+
+```lua
+local count = 1
+local endValue = 5
+
+for count, endValue do
+    print(count)
+end
+
+print("For Loop!")
+```
+
+You might notice the count value going up, Unlike while loops, once it's done iterating, it'll continue to run the rest of the code. For loops can also contain an optional increment value (defaults to 1), which can either count up or down depending on if it's a positive or negative value.
+
+```lua
+local count = 1
+local endValue = 5
+local incrementValue = 0.5
+
+for count, endValue, incrementValue do
+    print(count)
+end
+
+print("For Loop!")
+```
