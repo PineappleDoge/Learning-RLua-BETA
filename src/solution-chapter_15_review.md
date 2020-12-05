@@ -20,4 +20,3 @@ A4: B: `[[text`
 
 Q5: How would we check 3+ conditions in an if-statement?
 A5: A: elseif
-
