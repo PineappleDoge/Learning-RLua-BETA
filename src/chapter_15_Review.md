@@ -36,3 +36,10 @@ Q5: How would we check 3+ conditions in an if-statement?
 - B: else
 - C: All of the above
 
+
+
+
+
+## Next segment
+
+Feeling good about what you've learned? Amazing, be sure to head on to the next chapter, [functions](./chapter_21_Function.md).

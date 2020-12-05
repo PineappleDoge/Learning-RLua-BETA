@@ -79,7 +79,13 @@ local Plr_Username = "Username_0001" -- Good Example!
 local PrUsr = "Username_0001" -- Not a good example...
 ```
 
+Another fun fact is that we can define multiple variables on the same line, using commas `,`. This isn't partically useful now, but it gets useful when working with functions that return multiple values, which is explained more in [functions](./chapter_21_Functions.md).
 
+```lua
+local Value1, Value2 = 5, 10
+
+print(Value1, Value2)
+```
 
 
 
