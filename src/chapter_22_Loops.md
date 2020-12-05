@@ -19,7 +19,6 @@ end
 ```
 
 While true do loops run very fast, so performing heavy operations in a while loop will most likely crash your current console. To prevent this, we can add a delay, or wait() to our code to give it a very short break before running. 
-
 ```lua
 while true do
   wait()
@@ -36,6 +35,28 @@ local Four = 4
 while Five > Four do
   print("Running")
 end
+
+print("Continuing!")
 ```
 
-With while loops, we can also break them manually by using the `break` keyword.
+Notice how we never get to the seocnd print statement n out code?Another thing to note is that while loops *yield* the script, much like the *wait()* function. This means that anything under the while loop won't continue until the while loop is broken. 
+
+With while loops, we can also break them manually by using the `break` keyword. When putting this word in a while loop, it'll break the while loop and continue to run the rest of the script. 
+
+```lua
+local Number = 1
+
+while true do 
+    if Number >= 10 then
+        break
+    end
+
+    wait(1)
+    Number = Number + 1
+    print(Number)
+end
+
+print("While loop ended, continuing on with the rest of the script!")
+```
+
+You'll notice how the second print statement now runs, 
