@@ -96,4 +96,4 @@ end
 print("For Loop!")
 ```
 
-Alongside that, we can also 
+Pretty useful, huh? For Loops can also iterate through **tables** (explained more in [this chapter about tables](./chapter_23_tables.md))
