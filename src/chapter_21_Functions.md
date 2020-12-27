@@ -1,6 +1,6 @@
 # Functions
 
-Functions are chunks of code that can be written once, and then executed by using a command. Functions are one of the key principals of D.R.Y (Don't Repeat Yourself). They allow us to reuse code, and execute code in different areas of our script after our function has been defined. 
+Functions are blocks of code that can be defined once, and then executed by using a command. Functions are one of the key principals of D.R.Y (Don't Repeat Yourself). They allow us to reuse code, and execute code in different areas of our script after our function has been defined. 
 
 Functions are most notably defined by a name, followed directly by parathesis `()` `EX: wait()`. To define a function, we'll want to start off with the keyword `function`, follow by the function name, and then end it with parathesis `()`. After defining that, we'll want to close our function with the `end` keyword.
 
@@ -18,7 +18,7 @@ Just like that, we've defined a function! Anything between the `()` and the `end
 
 ## Function Calling
 
-When working with functions, it's important to know that they are not `self-executing`. This means that the function will not execute until it's called upon? After defining a function, we can execute it by simply typing the function's name followed by parathesis `()`.
+When working with functions, it's important to know that they are not `self-executing`. This means that the function will not execute until it's called upon, After defining a function, we can execute it by simply typing the function's name followed by parathesis `()`.
 
 ```lua 
 function AddNumbers()
@@ -28,7 +28,7 @@ end
 AddNumbers()
 ```
 
-The benefit of being able to call a function to run is that it gives us much more flexability when executing code. All we need to do is call the function after it's been defined, and we can run that code anywhere. We can even run the function multipile times!
+The benefit of being able to call a function to run is that it gives us much more flexability when writing and executing code. All we need to do is call the function after it's been defined, and we can run that code anywhere. We can even run the function multipile times!
 
 ```lua 
 function AddNumbers()
@@ -60,7 +60,7 @@ Players.PlayerAdded:Connect(OnPlayerAdded)
 
 ## Function Parameters & Arguments
 
-Alongside being able to call functions at any point after they've bene defined, we can also program our functions to expect parameters, and pass arguments through them. Confused? Here's an visual example of a function with parameters. We program our function to accept 2 parameters, add them together, and print out the result. When our function is called, we pass 2 and 4 as arguments.
+Alongside being able to call functions at any point after they've been defined, we can also program our functions to expect parameters, and pass arguments through them. Confused? Here's an visual example of a function with parameters. We program our function to accept 2 parameters, add them together, and print out the result. When our function is called, we pass 2 and 4 as arguments.
 
 ```lua
 function AddNumbers(number1, number2) -- parameters
@@ -71,6 +71,8 @@ AddNumbers(2, 4) -- arguments
 ```
 
 When passing arguments to a function, it's important to separate them with the usage of commas. It's important to know that you're the one in control when writing functions with custom arguments. Not all parameters of a function need to be used, but forgetting to pass an argument while not having a default value in your code will error.
+
+Alongside making sure arguments are passed properly, you need to make sure that the arguments are in proper order! Order matters when passing arguments, so make sure you pass them properly!
 
 
 
