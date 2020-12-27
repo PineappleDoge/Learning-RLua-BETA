@@ -95,3 +95,17 @@ end
 
 print("For Loop!")
 ```
+
+For loops can also iterate through **tables** (explained more in [tables](./chapter_23_Tables.md)). This allows us to perform code on a lot of objects with less code needing to be written. We can use the `pairs` function to loop through this table.
+
+```lua
+local ObjectTable = {'Object1', 'Object2', 'Object3', 'Object4'}
+
+for index, object in pairs(ObjectTable) do
+  print(object)
+end
+
+print("Finished printing all objects")
+```
+
+As shown, loops are extremely useful. Paired with functions, loops can shorten 1000's of lines into 100's, but what about storing dozens of objects? In our next chapter, we'll be discussing arrays, dictionaries, and the topic of [tables](chapter_23_Tables.md).
