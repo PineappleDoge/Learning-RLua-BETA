@@ -24,11 +24,11 @@ To make the most use of this book, you'll need to meet the prerequites listed be
 
 This book was written and reviewed by multiple people! If you like the book, go thank these guys for dedicating time!
 
-- PineappleDoge - Writer for Chapter 0, Chapter 1, and Chapter 2
-- SovietKitsune - Writer for Chapter 1, and Chapter 2
-- Windsake - Reviewer for Chapter 0, and Chapter 1
-- InsertUsernameHere - Reviewer for Chapter 0, and Chapter 1
-- InedibleGames - Reviewer for Chapter 0 and Chapter 1, grammar correction
+- PineappleDoge - Main writer, wrote most of the book
+- SovietKitsune - Former main writer, corrected PineappleDoge's mistakes
+- Windsake - Main reviewer, spellschecks book
+- InsertUsernameHere - Reviewer, spellcheck/infocheck book
+- InedibleGames - Grammer correction
 
 
 
@@ -44,6 +44,22 @@ Here are a few websites and techinques that we recommend if you have an issue!
 **Roblox Devforums** - A website managed by Roblox themselves. Asking for help here or searching if someone had the same issue as you is always a good idea, and a good last resort is to just post in the appropiate help channel.
 
 **Roblox Developer Hub** - A site that's managed by Roblox themselves. Documents all API for every Roblox service, instance, and object. Useful to double check all properties and methods an object may have. 
+
+
+
+
+
+## Support Us
+
+Writing this book takes time, and no one gets paid to write this book :(. If you want to support the community, here's a couple ways to support us!
+  
+- Join the [Discord server](https://discord.gg/ApnCuyg)!
+- Join our [Roblox group](https://www.roblox.com/groups/5586929/ROBLOX-Developers-Orange#!/about)
+- Buy our [donation shirt](https://www.roblox.com/catalog/4784367831/Roblox-Developers-Donator-Hoodie)
+
+
+
+
 
 ## End of Introduction
 
