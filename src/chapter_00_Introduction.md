@@ -54,9 +54,10 @@ Here are a few websites and techinques that we recommend if you have an issue!
 Writing this book takes time, and no one gets paid to write this book :(. If you want to support the community, here's a couple ways to support us!
   
 - Join the [Discord server](https://discord.gg/ApnCuyg)!
-- Join our [Roblox group](https://www.roblox.com/groups/5586929/ROBLOX-Developers-Orange#!/about)
-- Buy our [donation shirt](https://www.roblox.com/catalog/4784367831/Roblox-Developers-Donator-Hoodie)
+- Join our [Roblox group](https://www.roblox.com/groups/5586929/ROBLOX-Developers-Orange#!/about)!
+- Buy our [donation shirt](https://www.roblox.com/catalog/4784367831/Roblox-Developers-Donator-Hoodie)!
 
+Don't care? That's fine too! :(
 
 
 
