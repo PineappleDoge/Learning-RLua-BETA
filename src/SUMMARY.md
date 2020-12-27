@@ -20,6 +20,7 @@
 --
   - [Functions](./chapter_21_Functions.md)
   - [Loops](./chapter_22_Loops.md)
+  - [Tables, Dictionaries, & Arrays](./chapter_23_tables.md)
   
 ---
 ---
