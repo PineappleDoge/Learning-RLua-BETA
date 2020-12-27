@@ -1,6 +1,6 @@
 # Functions
 
-Functions are chunks of code that can be written once, and then executed by using a command. Functions are perhaps one of the key principals of D.R.Y (Don't Repeat Yourself). They allow us to reuse code, and execute code in different areas of our script after our function has been defined. 
+Functions are chunks of code that can be written once, and then executed by using a command. Functions are one of the key principals of D.R.Y (Don't Repeat Yourself). They allow us to reuse code, and execute code in different areas of our script after our function has been defined. 
 
 Functions are most notably defined by a name, followed directly by parathesis `()` `EX: wait()`. To define a function, we'll want to start off with the keyword `function`, follow by the function name, and then end it with parathesis `()`. After defining that, we'll want to close our function with the `end` keyword.
 
@@ -159,4 +159,4 @@ end)
 ```
 
 
-Functions are extremely useful, but what about repeating code? In the next chapter, we'll cover [loops](./chapter_22_Loops.md). While there's varying types of loops, all of them repeat code.
+Functions are extremely useful, but what about repeating code? In the next chapter, we'll cover [loops](./chapter_22_Loops.md). While there's varying types of loops, all of them have 1 similar trait, that they repeat blocks of code.
