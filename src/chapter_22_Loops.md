@@ -1,6 +1,6 @@
 # Loops
 
-In programming, it's very often that we'll want to repeat code. Whether it's repeating the same code to a lot of objects, or just repeating code until something happens, we'll want to familiarize ourselfs with the concepts of `loops` .
+The need to repeat code appears a lot. Whether it's repeating the same code to a lot of objects, or running a function until a condition is met, we'll want to understand loops.
 
 In RLua, there are 3 types of loops, `while` , `for` , and `repeat` loops. Each of these loops has varying uses, but they all allow you to repeat sections of code. There's techinally a 4th loop called `recursion` , but we discussed that in [functions](./chapter_21_Functions.md), and this chapter will only lightly go over recusion.
 
@@ -36,7 +36,7 @@ end
 print("Continuing!")
 ```
 
-Notice how we never get to the seocnd print statement n out code? Another thing to note is that while loops *yield* the script, much like the *wait()* function. This means that anything under the while loop won't continue until the while loop is broken. 
+Notice how we never get to the second print statement in our code? Another thing to note is that while loops *yield* the script, much like the *wait()* function. This means that anything under the while loop won't continue until the while loop is broken. 
 
 With while loops, we can also break them manually by using the `break` keyword. When putting this word in a while loop, it'll break the while loop and continue to run the rest of the script. 
 
