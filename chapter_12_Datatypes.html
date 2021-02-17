@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Data Types - Learning RLua</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_00_Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter_01_Programming_Concepts.html"><strong aria-hidden="true">2.</strong> Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_11_Variables.html"><strong aria-hidden="true">2.1.</strong> Variables &amp; Comments</a></li><li class="chapter-item expanded "><a href="chapter_12_Datatypes.html" class="active"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="chapter_13_Control_Flow.html"><strong aria-hidden="true">2.3.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="chapter_14_Operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="chapter_15_Review.html"><strong aria-hidden="true">2.5.</strong> Chapters 2.1-2.4 Review</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_02_More_Concepts.html"><strong aria-hidden="true">3.</strong> Advanced Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_21_Functions.html"><strong aria-hidden="true">3.1.</strong> Functions</a></li><li class="chapter-item expanded "><a href="chapter_22_Loops.html"><strong aria-hidden="true">3.2.</strong> Loops</a></li><li class="chapter-item expanded "><a href="chapter_23_tables.html"><strong aria-hidden="true">3.3.</strong> Tables, Dictionaries, &amp; Arrays</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_03_Solutions.html"><strong aria-hidden="true">4.</strong> Solutions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="solution-chapter_15_review.html"><strong aria-hidden="true">4.1.</strong> 2.1-2.4 Solutions</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Learning RLua</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#data-types" id="data-types">Data types</a></h1>
+<p>One of the most fundamental things about Lua (and RLua by extension!) are data types and variables.</p>
+<p>The relationship between data types and variables can be thought of like a name tag and its content. An example would be giving a dog a nickname instead of calling the dog by it’s full name. You can call the nickname, and the dog would be what you’re calling. The benefits of this is that you can contain data in a short, user-friendly nickname so it’s easier to reference throughout your scripts.</p>
+<p>RLua has several different data types, we listed the simple/primitive types below.</p>
+<pre><code class="language-lua">local stringType = &quot;Hello&quot;
+local numberType = 0
+local booleanType = true
+local nilType = nil 
+</code></pre>
+<p>These 4 aren’t all the possible data types that RLua contains, but it’s a good starting point for learning. The other data types will be discussed in their own dedicated future chapters in the book, but we’ll focus on these four right now, due to them being essential and the building blocks to more advanced topics.</p>
+<p>These 4 types plus 3 more complex types make up <em>almost</em> everything.</p>
+<ul>
+<li>String
+<ul>
+<li>This data type represents text and are represented by text surrounded with <code>&quot; &quot;</code>, <code>' '</code>, or <code>[[ ]]</code></li>
+</ul>
+</li>
+<li>Number
+<ul>
+<li>This data type represents numbers and can contain decimals. </li>
+</ul>
+</li>
+<li>Boolean
+<ul>
+<li>This data type represents <code>true</code> or <code>false</code> and uses the keywords <code>true</code> and <code>false</code>. Think of it like a lightswitch</li>
+</ul>
+</li>
+<li>Nil
+<ul>
+<li>This data type represents the lack of data. It's very important to know that this datatype shows how there's no data attached.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#strings" id="strings">Strings</a></h2>
+<p>As we mentioned before, strings represent text. Strings can be represented by text surrounded by <code>&quot; &quot;</code>, <code>' '</code>, or <code>[[ ]]</code>. Here's a visual example of all the strings going at work.</p>
+<pre><code class="language-lua">local String1 = &quot;First String!&quot; 
+local String2 = 'Second String!'
+local String3 = [[Final String!]]
+</code></pre>
+<p>All of those are valid ways to create a string, although that doesn't mean we can mix and match them exactly. When creating a string, it's required to start and end the string with the same symbol, or otherwise it'll consider the string incomplete and error.</p>
+<p>So now that we know how to create strings, that natually creates more questions about the limits of strings. When creating strings, it's important to know what we can and can't do with them. A common issue is how to create multiline strings. A nice thing to know about <code>[[ ]]</code> is that it's multiline. </p>
+<pre><code class="language-lua">local FailedMultilineString = &quot;Oh no, 
+this is not multiline&quot; 
+
+local FailedMultilineString = 'Oh no,
+this also is not multiline'
+
+local CorrectMultilineString = [[Ok, this
+is much better!]]
+</code></pre>
+<p>Now that we know how to create multiline strings, we'll need to figure out how to contain string creation characters <code>[[]]</code>, <code>&quot; &quot;</code>, <code>' '</code> in strings. One method we can use is called escaping. This is done with the <code>\</code>(backslash)</p>
+<pre><code class="language-lua">local double = &quot;So then he said \&quot;Wow, this is escapism!\&quot;&quot;
+local single = 'So then he said &quot;Wow, this\'ll work too!&quot;'
+local AnotherEscapism = [[&quot;Wow&quot;, he said. &quot;I didn't know this would work&quot;]]
+print(single, double)
+</code></pre>
+<p>To summarize what the code does, it allows us to tell our code to ignore the upcoming lines. This allows us to put string symbols in strings without it ending off the string or creating a new one, causing an error. Below is a extensive list of ways you can incorporate escapism in code.</p>
+<ul>
+<li><code>\a</code> bell</li>
+<li><code>\b</code> back space</li>
+<li><code>\f</code> form feed</li>
+<li><code>\n</code> newline</li>
+<li><code>\r</code> carriage return</li>
+<li><code>\t</code> horizontal tab</li>
+<li><code>\v</code> vertical tab</li>
+<li><code>\\</code> backslash</li>
+<li><code>\&quot;</code> double quote</li>
+<li><code>\'</code> single quote</li>
+<li><code>\[</code> left square bracket</li>
+<li><code>\]</code> right square bracket</li>
+</ul>
+<p>Awesome! We've discussed multiline strings and having string symbols in strings, but what about combining strings? In the example below, we discuss a way to combine separate strings into 1 giant string.</p>
+<pre><code class="language-lua">local Hello = &quot;Hello, &quot;
+local World = &quot;World!&quot;
+
+local HelloWorld = Hello .. World
+</code></pre>
+<p><code>..</code>, otherwise known as concatenation, is an operator which can be used to connect two strings together. There are more to strings which you can read at <a href="https://developer.roblox.com/en-us/api-reference/lua-docs/string">https://developer.roblox.com/en-us/api-reference/lua-docs/string</a>.</p>
+<h2><a class="header" href="#number" id="number">Number</a></h2>
+<p>Numbers are argubably one of the most important datatypes within RLua. Alongside storing data as numbers, we can also perform mathmathical operations on numbers. Below are some quick but practical examples of performing math,.</p>
+<pre><code class="language-lua">local Sum = 5 + 3
+local Product = 5 * 3
+local Remainder = 5 - 3
+local Division = 6 / 3
+</code></pre>
+<p>Alongside being able to perform math operations using numbers, we can perform operations using variables that store numbers. Reminds you of algebra, doesn't it? Here's an example below:</p>
+<pre><code class="language-lua">local a = 6
+local b = 4
+
+local c = a * b + 5
+</code></pre>
+<p>Cool, isn't it? Besides the basic 4 operations, RLua also supports the following operations below. </p>
+<ul>
+<li><code>+</code> addition</li>
+<li><code>-</code> subtraction</li>
+<li><code>*</code> multiplication</li>
+<li><code>/</code> division</li>
+<li><code>%</code> modulus</li>
+<li><code>^</code> power</li>
+</ul>
+<p>RLua also follows the Order Of Operations (OOO). </p>
+<pre><code class="language-lua">local x = 5 * 2 + 2
+
+local y = 5 * (2 + 2)
+</code></pre>
+<p>The values of <code>x</code> and <code>y</code> are different because of the order of operations. There is much more you can do with numbers and you can check the <a href="https://developer.roblox.com/en-us/api-reference/lua-docs/math">standard math library</a></p>
+<h2><a class="header" href="#booleans" id="booleans">Booleans</a></h2>
+<p>Booleans are just values which represent <code>true</code> or <code>false</code> (or both...).</p>
+<pre><code class="language-lua">local trueBool = true
+local falseBool = false
+</code></pre>
+<p>Booleans are commonly used within if statements which will be covered in <a href="./ch01-05-control-flow.html">control flow</a>. All operators return booleans, think of things like <code>&gt;</code> and <code>==</code>. These are extensively used to see if an operation is true (or not).</p>
+<pre><code class="language-lua">local IsTrue = 5 &gt; 2
+local IsFalse = 5 &lt; 3 
+
+print(IsTrue)
+print(IsFalse)
+</code></pre>
+<h2><a class="header" href="#type-interaction" id="type-interaction">Type interaction</a></h2>
+<p>IN RLua, different types can have different interactions. </p>
+<pre><code class="language-lua">local str = &quot;1&quot;
+local num = 2
+
+local combo = str + num
+print(combo)
+</code></pre>
+<p>You might've thought that strings couldn't be added with numbers, and you would be correct. However, RLua has a type interaction system that allows numbers to interact </p>
+<pre><code class="language-lua">local str = &quot;a&quot;
+local num = 2
+
+local combo = str + num
+</code></pre>
+<p>This would cause an error along the lines of <code>attempt to perform arithmetic on a string value</code>. Errors like these happen whenever you try to perform addition on non-number values.</p>
+<h2><a class="header" href="#type-casting" id="type-casting">Type casting</a></h2>
+<p>You heard of the some functions like <code>tonumber</code> and possibly <code>tostring</code>. This is called explicit type casting. Its explicit as you have to write these functions. Lua also has <strong>implicit</strong> type casting. For example, the <code>&quot;1&quot; + 2</code> was implicit. We didn't have to tell Lua to convert the string to a number. Some more examples would be concatting a string and number.</p>
+<pre><code class="language-lua">local combo = &quot;Hello I am &quot; .. 100 .. &quot; years old!&quot;
+</code></pre>
+<p>The output would be <code>Hello I am &quot; .. 100 .. &quot; years old&quot;!</code></p>
+<p>In the next chapter, we'll be discussing if-statements, while loops, and general <a href="./chapter_13_Control_Flow.html">control flow</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="chapter_11_Variables.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="chapter_13_Control_Flow.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="chapter_11_Variables.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="chapter_13_Control_Flow.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction - Learning RLua</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_00_Introduction.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter_01_Programming_Concepts.html"><strong aria-hidden="true">2.</strong> Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_11_Variables.html"><strong aria-hidden="true">2.1.</strong> Variables &amp; Comments</a></li><li class="chapter-item expanded "><a href="chapter_12_Datatypes.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="chapter_13_Control_Flow.html"><strong aria-hidden="true">2.3.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="chapter_14_Operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="chapter_15_Review.html"><strong aria-hidden="true">2.5.</strong> Chapters 2.1-2.4 Review</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_02_More_Concepts.html"><strong aria-hidden="true">3.</strong> Advanced Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_21_Functions.html"><strong aria-hidden="true">3.1.</strong> Functions</a></li><li class="chapter-item expanded "><a href="chapter_22_Loops.html"><strong aria-hidden="true">3.2.</strong> Loops</a></li><li class="chapter-item expanded "><a href="chapter_23_tables.html"><strong aria-hidden="true">3.3.</strong> Tables, Dictionaries, &amp; Arrays</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_03_Solutions.html"><strong aria-hidden="true">4.</strong> Solutions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="solution-chapter_15_review.html"><strong aria-hidden="true">4.1.</strong> 2.1-2.4 Solutions</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Learning RLua</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<p>Hi, just before you get to reading, we want to thank you for giving Learning RLua a chance! This book is intended to be an introduction to <strong>RLua</strong>, a Roblox <em>Modified</em> version of Lua. It is meant to go over basic scripting paradigms that RLua has, along with other basic ideas, such as events, services, and objects. We’re going to be supplementing this book with exercises, Q&amp;A, and Quizzes.</p>
+<p>As Roblox is a constantly evolving engine, certain services and methods might become <strong>deprecated</strong>, or otherwise outdated. We recommend staying up to date by looking at the official Roblox Developer hub. (<a href="https://developer.roblox.com/en-us/">https://developer.roblox.com/en-us/</a>)</p>
+<p>As a note, this book isn’t meant to be a comprehensive guide about every service, method, property, or quirk of RLua. It’s meant to be an introduction into the language and scripting on Roblox. Intermediate and Expert RLua users will get little to no use out of this book, as it’s targeted towards a more beginner audience. We strongly recommend using your search engine of preference to search for answers if you have a question that this book doesn’t answer.</p>
+<h2><a class="header" href="#preresquites" id="preresquites">Preresquites</a></h2>
+<p>To make the most use of this book, you'll need to meet the prerequites listed below. </p>
+<ul>
+<li>A desktop/computer</li>
+<li>Roblox Player + Roblox Studio</li>
+<li>Basic knowledge about Roblox Studio navigation</li>
+</ul>
+<h2><a class="header" href="#credits" id="credits">Credits</a></h2>
+<p>This book was written and reviewed by multiple people! If you like the book, go thank these guys for dedicating time!</p>
+<ul>
+<li>PineappleDoge - Main writer, wrote most of the book</li>
+<li>SovietKitsune - Former main writer, corrected PineappleDoge's mistakes</li>
+<li>Windsake - Main reviewer, spellschecks book</li>
+<li>InsertUsernameHere - Reviewer, spellcheck/infocheck book</li>
+<li>InedibleGames - Grammer correction</li>
+</ul>
+<h2><a class="header" href="#resources" id="resources">Resources</a></h2>
+<p>After reading the book, you should be fluent enough in RLua to understand basic errors, so there's a lot of resources and websites you can use to help yourself fix errors! 
+Here are a few websites and techinques that we recommend if you have an issue! </p>
+<p><strong>Scripting Helpers</strong> - A RLua based website that allows you to make an account and ask for help! If you have a scripting issue, it's always a good idea to look it up here since there's a good chance another person might have the same question as you.</p>
+<p><strong>Roblox Devforums</strong> - A website managed by Roblox themselves. Asking for help here or searching if someone had the same issue as you is always a good idea, and a good last resort is to just post in the appropiate help channel.</p>
+<p><strong>Roblox Developer Hub</strong> - A site that's managed by Roblox themselves. Documents all API for every Roblox service, instance, and object. Useful to double check all properties and methods an object may have. </p>
+<h2><a class="header" href="#support-us" id="support-us">Support Us</a></h2>
+<p>Writing this book takes time, and no one gets paid to write this book :(. If you want to support the community, here's a couple ways to support us!</p>
+<ul>
+<li>Join the <a href="https://discord.gg/ApnCuyg">Discord server</a>!</li>
+<li>Join our <a href="https://www.roblox.com/groups/5586929/ROBLOX-Developers-Orange#!/about">Roblox group</a>!</li>
+<li>Buy our <a href="https://www.roblox.com/catalog/4784367831/Roblox-Developers-Donator-Hoodie">donation shirt</a>!</li>
+</ul>
+<p>Don't care? That's fine too! :(</p>
+<h2><a class="header" href="#end-of-introduction" id="end-of-introduction">End of Introduction</a></h2>
+<p>That's enough talking from us though, we hope you enjoy the book!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+                            <a rel="next" href="chapter_01_Programming_Concepts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+                    <a rel="next" href="chapter_01_Programming_Concepts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

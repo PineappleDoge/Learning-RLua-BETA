@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Variables &amp; Comments - Learning RLua</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_00_Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter_01_Programming_Concepts.html"><strong aria-hidden="true">2.</strong> Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_11_Variables.html" class="active"><strong aria-hidden="true">2.1.</strong> Variables &amp; Comments</a></li><li class="chapter-item expanded "><a href="chapter_12_Datatypes.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="chapter_13_Control_Flow.html"><strong aria-hidden="true">2.3.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="chapter_14_Operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="chapter_15_Review.html"><strong aria-hidden="true">2.5.</strong> Chapters 2.1-2.4 Review</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_02_More_Concepts.html"><strong aria-hidden="true">3.</strong> Advanced Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_21_Functions.html"><strong aria-hidden="true">3.1.</strong> Functions</a></li><li class="chapter-item expanded "><a href="chapter_22_Loops.html"><strong aria-hidden="true">3.2.</strong> Loops</a></li><li class="chapter-item expanded "><a href="chapter_23_tables.html"><strong aria-hidden="true">3.3.</strong> Tables, Dictionaries, &amp; Arrays</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_03_Solutions.html"><strong aria-hidden="true">4.</strong> Solutions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="solution-chapter_15_review.html"><strong aria-hidden="true">4.1.</strong> 2.1-2.4 Solutions</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Learning RLua</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#variables" id="variables">Variables</a></h1>
+<p>One of the most fundamental things about Lua (and RLua by extension!) are variables. By using variables, we gain the ability to store and reference data. In RLua, there's two ways we can create variables, by either using a local scope or global scope. By default, all variables are considered global unless defined otherwise. Variables are defined as a name, <code>=</code>, then data.</p>
+<pre><code class="language-lua">data = 0
+</code></pre>
+<p>Alternatively, we can create varaibles in another way, by prefixing our variable name with the <code>local</code> keyword.</p>
+<pre><code class="language-lua">local data = 0
+</code></pre>
+<p>Why are we doing this? What's the difference? Well, there's 2 main reasons why you would prefix it with local. The biggest reason is due to <code>scope</code>. We'll get more into that in a future chapter, but for a short explanation, variables cannot share the same name. Another reason, although less important, is performance. It's generally good practice to prefix variables with local to show that you're defining a variable. For the rest of this book, we'll be using the local keyword to construct variables.</p>
+<h2><a class="header" href="#invalid-variable-names" id="invalid-variable-names">Invalid Variable Names</a></h2>
+<p>In RLua, there's correct ways and incorrect ways to construct variables. Constructing variables is generally lax, but there's important edge-cases we need to realize while constructing variables names. In a short, comprehensive list that's been constructed for your viewing pleasure, there's a general list of things to watch out for when constructing variables.</p>
+<ul>
+<li>Creating variable names with a number at the beginning <code>local 1username = &quot;Username Here&quot; </code></li>
+<li>Creating variable names with spaces <code>local PlayerUsername = &quot;Username Here&quot;</code></li>
+<li>Creating variable names with any of the below, no matter where they're located </li>
+<li>
+<ul>
+<li>Brackets ( ), { }, [ ], &lt; &gt;</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Operators * + - /</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Special characters @ # $ % ^ &amp; ! ` ~ = , ? ' &quot; ; :</li>
+</ul>
+</li>
+</ul>
+<p><em>Technically</em>, you can have these as variables by using some &quot;illegal&quot; techniques, but those may or may not be discussed later</p>
+<h2><a class="header" href="#global-vs-local" id="global-vs-local">Global Vs Local</a></h2>
+<p>As discussed earlier, variable names can be created in multiple scopes, either local or global. By default, variables are considered global, but what's the difference? With global variables, the greatest difference is that they can be accessed in any scope after they're defined. To show this off, we'll use the code sample below.</p>
+<pre><code class="language-lua">do
+  globalVariable = &quot;Accessed&quot;
+end
+
+print(globalVariable)
+</code></pre>
+<p>Once again, this'll be explained more in the next chapter, <a href="./chapter_12_Datatypes">datatypes</a> but we'll go over a basic idea of scope. A scope is the context of a program in which variables can be accessed, used, or validated. Scopes can be defined by functions, while statements, do-end statements, and if-statements. Local variables are similar to global variables, except for the fundamental difference in <strong>scope</strong>. Local variables are limited to the scope that they'll defined in, and can't be accessed by any other scope.</p>
+<pre><code class="language-lua">do
+  local data = 5
+end
+
+print(data)
+</code></pre>
+<p>In the example above, the output is <code>nil</code>, but why? This is because of the scope that they're created in. In the beginning of the script, we create a new scope by typing <code>do</code>, and close that scope off with <code>end</code>. While the data variable is defined in that scope, the print statement isn't, so the print statement doesn't know what data is, and defaults to nil. To further explain the output, <code>nil</code> is a datatype that represents the lack of data. Sounds confusing? This'll be explained more in the next chapter, <a href="./chapter_12_Datatypes.html">datatypes</a>.</p>
+<h2><a class="header" href="#practices" id="practices">Practices</a></h2>
+<p>Lua tends to lean to being <code>camelCase</code>. Roblox on the other hand names with <code>PascalCase</code>. You may question what is the difference between the two. The difference is that in <code>camelCase</code> the first character is lowercase while in <code>PascalCase</code> the first letter is capital. This is mostly for visual clarity, it doesn't have an effect on the code itself.</p>
+<pre><code class="language-lua">local camelCase = 0
+local PascalCase = 0
+</code></pre>
+<p>When creating variable names, it's a great idea to be descriptive with the naming. Variable names should be representitive of the data stored in them, and named as such. It's always better to type a longer name rather than a 1-5 letter shortization of it. </p>
+<pre><code class="language-lua">local PlayerUsername = &quot;Username_0001&quot; -- Great Example!
+local Plr_Username = &quot;Username_0001&quot; -- Good Example! 
+local PrUsr = &quot;Username_0001&quot; -- Not a good example...
+</code></pre>
+<p>Another fun fact is that we can define multiple variables on the same line, using commas <code>,</code>. This isn't partically useful now, but it gets useful when working with functions that return multiple values, which is explained more in <a href="./chapter_21_Functions.html">functions</a>.</p>
+<pre><code class="language-lua">local Value1, Value2 = 5, 10
+
+print(Value1, Value2)
+</code></pre>
+<h2><a class="header" href="#mutability" id="mutability">Mutability</a></h2>
+<p>All variables in RLua are mutable by default and without using <a href="https://www.lua.org/pil/13.html">metatables</a>. By being mutable, we can change the value of a variable at any time after the variables been defined. In the example below, we create a local variable called data, and then change it later on in the script.</p>
+<pre><code class="language-lua">local data = 5
+
+data = 3
+</code></pre>
+<p>If you're reading the code, you might notice how <code>data = 3</code> is kind of like defining a global variable. A very important thing to understand is that when doing checks like this, RLua checks if there's a pre-existing variable with the same name. If a variable is found, it'll use that variable to apply changes, otherwise it'll create a new variable. </p>
+<h2><a class="header" href="#comments" id="comments">Comments</a></h2>
+<p>You've probably noticed the usage of comments throughout the chapter, so let's quickly go over what comments do. Comments, as the name suggest, allow you to document your code in the script file. Like any other language, comments are parsed, or ran throughout the code, so you don't need to worry about comments having an effect on the code you right. Comments are very useful for documenting code, which can come in handy when working with others/looking at old code. Comments can be constructed in a singleline or multiline format. </p>
+<pre><code class="language-lua">-- This is a singleline comment. See how it stays on one line
+--[[ 
+  This is a multiline comment.
+  Notice how it spreads through separate lines?
+]]
+</code></pre>
+<p>Comments can be amazing, although too many can actually reduce readability. As a rule of thumb, don't comment redundantly, and don't comment too often unless you're willing to keep the comments updated as the code gets updated.</p>
+<pre><code class="language-lua">local x = 5 -- sets value of x to 5
+-- ^^ Above is a bad comment, reading the variable name tells us this already
+</code></pre>
+<p>In short, don't overcomment code. Use comments sparingly, and use them where they'll have the most effect. In the next chapter, we'll take a more in-depth look at <a href="./chapter_12_Datatypes.html">datatypes</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="chapter_01_Programming_Concepts.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="chapter_12_Datatypes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="chapter_01_Programming_Concepts.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="chapter_12_Datatypes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

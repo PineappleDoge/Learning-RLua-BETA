@@ -1,0 +1,904 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Learning RLua</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_00_Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="spacer"></li><li class="spacer"></li><li class="chapter-item expanded "><a href="chapter_01_Programming_Concepts.html"><strong aria-hidden="true">2.</strong> Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_11_Variables.html"><strong aria-hidden="true">2.1.</strong> Variables &amp; Comments</a></li><li class="chapter-item expanded "><a href="chapter_12_Datatypes.html"><strong aria-hidden="true">2.2.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="chapter_13_Control_Flow.html"><strong aria-hidden="true">2.3.</strong> Control Flow</a></li><li class="chapter-item expanded "><a href="chapter_14_Operators.html"><strong aria-hidden="true">2.4.</strong> Operators</a></li><li class="chapter-item expanded "><a href="chapter_15_Review.html"><strong aria-hidden="true">2.5.</strong> Chapters 2.1-2.4 Review</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_02_More_Concepts.html"><strong aria-hidden="true">3.</strong> Advanced Programming Concepts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapter_21_Functions.html"><strong aria-hidden="true">3.1.</strong> Functions</a></li><li class="chapter-item expanded "><a href="chapter_22_Loops.html"><strong aria-hidden="true">3.2.</strong> Loops</a></li><li class="chapter-item expanded "><a href="chapter_23_tables.html"><strong aria-hidden="true">3.3.</strong> Tables, Dictionaries, &amp; Arrays</a></li><li class="spacer"></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="chapter_03_Solutions.html"><strong aria-hidden="true">4.</strong> Solutions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="solution-chapter_15_review.html"><strong aria-hidden="true">4.1.</strong> 2.1-2.4 Solutions</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Learning RLua</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<p>Hi, just before you get to reading, we want to thank you for giving Learning RLua a chance! This book is intended to be an introduction to <strong>RLua</strong>, a Roblox <em>Modified</em> version of Lua. It is meant to go over basic scripting paradigms that RLua has, along with other basic ideas, such as events, services, and objects. We’re going to be supplementing this book with exercises, Q&amp;A, and Quizzes.</p>
+<p>As Roblox is a constantly evolving engine, certain services and methods might become <strong>deprecated</strong>, or otherwise outdated. We recommend staying up to date by looking at the official Roblox Developer hub. (<a href="https://developer.roblox.com/en-us/">https://developer.roblox.com/en-us/</a>)</p>
+<p>As a note, this book isn’t meant to be a comprehensive guide about every service, method, property, or quirk of RLua. It’s meant to be an introduction into the language and scripting on Roblox. Intermediate and Expert RLua users will get little to no use out of this book, as it’s targeted towards a more beginner audience. We strongly recommend using your search engine of preference to search for answers if you have a question that this book doesn’t answer.</p>
+<h2><a class="header" href="#preresquites" id="preresquites">Preresquites</a></h2>
+<p>To make the most use of this book, you'll need to meet the prerequites listed below. </p>
+<ul>
+<li>A desktop/computer</li>
+<li>Roblox Player + Roblox Studio</li>
+<li>Basic knowledge about Roblox Studio navigation</li>
+</ul>
+<h2><a class="header" href="#credits" id="credits">Credits</a></h2>
+<p>This book was written and reviewed by multiple people! If you like the book, go thank these guys for dedicating time!</p>
+<ul>
+<li>PineappleDoge - Main writer, wrote most of the book</li>
+<li>SovietKitsune - Former main writer, corrected PineappleDoge's mistakes</li>
+<li>Windsake - Main reviewer, spellschecks book</li>
+<li>InsertUsernameHere - Reviewer, spellcheck/infocheck book</li>
+<li>InedibleGames - Grammer correction</li>
+</ul>
+<h2><a class="header" href="#resources" id="resources">Resources</a></h2>
+<p>After reading the book, you should be fluent enough in RLua to understand basic errors, so there's a lot of resources and websites you can use to help yourself fix errors! 
+Here are a few websites and techinques that we recommend if you have an issue! </p>
+<p><strong>Scripting Helpers</strong> - A RLua based website that allows you to make an account and ask for help! If you have a scripting issue, it's always a good idea to look it up here since there's a good chance another person might have the same question as you.</p>
+<p><strong>Roblox Devforums</strong> - A website managed by Roblox themselves. Asking for help here or searching if someone had the same issue as you is always a good idea, and a good last resort is to just post in the appropiate help channel.</p>
+<p><strong>Roblox Developer Hub</strong> - A site that's managed by Roblox themselves. Documents all API for every Roblox service, instance, and object. Useful to double check all properties and methods an object may have. </p>
+<h2><a class="header" href="#support-us" id="support-us">Support Us</a></h2>
+<p>Writing this book takes time, and no one gets paid to write this book :(. If you want to support the community, here's a couple ways to support us!</p>
+<ul>
+<li>Join the <a href="https://discord.gg/ApnCuyg">Discord server</a>!</li>
+<li>Join our <a href="https://www.roblox.com/groups/5586929/ROBLOX-Developers-Orange#!/about">Roblox group</a>!</li>
+<li>Buy our <a href="https://www.roblox.com/catalog/4784367831/Roblox-Developers-Donator-Hoodie">donation shirt</a>!</li>
+</ul>
+<p>Don't care? That's fine too! :(</p>
+<h2><a class="header" href="#end-of-introduction" id="end-of-introduction">End of Introduction</a></h2>
+<p>That's enough talking from us though, we hope you enjoy the book!</p>
+<h1><a class="header" href="#chapters-1-4-basic-programming" id="chapters-1-4-basic-programming">Chapters 1-4: Basic Programming</a></h1>
+<p>In the following chapters, we'll cover fundamental concepts that almost every <strong>practical</strong> language has and how they work within RLua. Many languages will have much in common at the core ignoring things like syntax. They all contain the fundamentals of a programming language. None of the concepts presented will be special to RLua but later on we will discuss how they relate to Roblox. </p>
+<p>In this chapter, you can expect us to go over variables, the basic (primitive) types, functions, comments and control flow. These are the fundamental building blocks that you'll need to understand in order to understand the rest of this book, so we strongly recommend coming back to these chapters and trying to understand them. These chapters will try to cover as much information as possible, so as you go through the book, there's a strong informational chapter that you can reference back to. </p>
+<p>Now that this note is out of the way, let's continue to the next section, in which we'll talk about variables, datatypes, and more!</p>
+<h1><a class="header" href="#variables" id="variables">Variables</a></h1>
+<p>One of the most fundamental things about Lua (and RLua by extension!) are variables. By using variables, we gain the ability to store and reference data. In RLua, there's two ways we can create variables, by either using a local scope or global scope. By default, all variables are considered global unless defined otherwise. Variables are defined as a name, <code>=</code>, then data.</p>
+<pre><code class="language-lua">data = 0
+</code></pre>
+<p>Alternatively, we can create varaibles in another way, by prefixing our variable name with the <code>local</code> keyword.</p>
+<pre><code class="language-lua">local data = 0
+</code></pre>
+<p>Why are we doing this? What's the difference? Well, there's 2 main reasons why you would prefix it with local. The biggest reason is due to <code>scope</code>. We'll get more into that in a future chapter, but for a short explanation, variables cannot share the same name. Another reason, although less important, is performance. It's generally good practice to prefix variables with local to show that you're defining a variable. For the rest of this book, we'll be using the local keyword to construct variables.</p>
+<h2><a class="header" href="#invalid-variable-names" id="invalid-variable-names">Invalid Variable Names</a></h2>
+<p>In RLua, there's correct ways and incorrect ways to construct variables. Constructing variables is generally lax, but there's important edge-cases we need to realize while constructing variables names. In a short, comprehensive list that's been constructed for your viewing pleasure, there's a general list of things to watch out for when constructing variables.</p>
+<ul>
+<li>Creating variable names with a number at the beginning <code>local 1username = &quot;Username Here&quot; </code></li>
+<li>Creating variable names with spaces <code>local PlayerUsername = &quot;Username Here&quot;</code></li>
+<li>Creating variable names with any of the below, no matter where they're located </li>
+<li>
+<ul>
+<li>Brackets ( ), { }, [ ], &lt; &gt;</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Operators * + - /</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Special characters @ # $ % ^ &amp; ! ` ~ = , ? ' &quot; ; :</li>
+</ul>
+</li>
+</ul>
+<p><em>Technically</em>, you can have these as variables by using some &quot;illegal&quot; techniques, but those may or may not be discussed later</p>
+<h2><a class="header" href="#global-vs-local" id="global-vs-local">Global Vs Local</a></h2>
+<p>As discussed earlier, variable names can be created in multiple scopes, either local or global. By default, variables are considered global, but what's the difference? With global variables, the greatest difference is that they can be accessed in any scope after they're defined. To show this off, we'll use the code sample below.</p>
+<pre><code class="language-lua">do
+  globalVariable = &quot;Accessed&quot;
+end
+
+print(globalVariable)
+</code></pre>
+<p>Once again, this'll be explained more in the next chapter, <a href="./chapter_12_Datatypes">datatypes</a> but we'll go over a basic idea of scope. A scope is the context of a program in which variables can be accessed, used, or validated. Scopes can be defined by functions, while statements, do-end statements, and if-statements. Local variables are similar to global variables, except for the fundamental difference in <strong>scope</strong>. Local variables are limited to the scope that they'll defined in, and can't be accessed by any other scope.</p>
+<pre><code class="language-lua">do
+  local data = 5
+end
+
+print(data)
+</code></pre>
+<p>In the example above, the output is <code>nil</code>, but why? This is because of the scope that they're created in. In the beginning of the script, we create a new scope by typing <code>do</code>, and close that scope off with <code>end</code>. While the data variable is defined in that scope, the print statement isn't, so the print statement doesn't know what data is, and defaults to nil. To further explain the output, <code>nil</code> is a datatype that represents the lack of data. Sounds confusing? This'll be explained more in the next chapter, <a href="./chapter_12_Datatypes.html">datatypes</a>.</p>
+<h2><a class="header" href="#practices" id="practices">Practices</a></h2>
+<p>Lua tends to lean to being <code>camelCase</code>. Roblox on the other hand names with <code>PascalCase</code>. You may question what is the difference between the two. The difference is that in <code>camelCase</code> the first character is lowercase while in <code>PascalCase</code> the first letter is capital. This is mostly for visual clarity, it doesn't have an effect on the code itself.</p>
+<pre><code class="language-lua">local camelCase = 0
+local PascalCase = 0
+</code></pre>
+<p>When creating variable names, it's a great idea to be descriptive with the naming. Variable names should be representitive of the data stored in them, and named as such. It's always better to type a longer name rather than a 1-5 letter shortization of it. </p>
+<pre><code class="language-lua">local PlayerUsername = &quot;Username_0001&quot; -- Great Example!
+local Plr_Username = &quot;Username_0001&quot; -- Good Example! 
+local PrUsr = &quot;Username_0001&quot; -- Not a good example...
+</code></pre>
+<p>Another fun fact is that we can define multiple variables on the same line, using commas <code>,</code>. This isn't partically useful now, but it gets useful when working with functions that return multiple values, which is explained more in <a href="./chapter_21_Functions.html">functions</a>.</p>
+<pre><code class="language-lua">local Value1, Value2 = 5, 10
+
+print(Value1, Value2)
+</code></pre>
+<h2><a class="header" href="#mutability" id="mutability">Mutability</a></h2>
+<p>All variables in RLua are mutable by default and without using <a href="https://www.lua.org/pil/13.html">metatables</a>. By being mutable, we can change the value of a variable at any time after the variables been defined. In the example below, we create a local variable called data, and then change it later on in the script.</p>
+<pre><code class="language-lua">local data = 5
+
+data = 3
+</code></pre>
+<p>If you're reading the code, you might notice how <code>data = 3</code> is kind of like defining a global variable. A very important thing to understand is that when doing checks like this, RLua checks if there's a pre-existing variable with the same name. If a variable is found, it'll use that variable to apply changes, otherwise it'll create a new variable. </p>
+<h2><a class="header" href="#comments" id="comments">Comments</a></h2>
+<p>You've probably noticed the usage of comments throughout the chapter, so let's quickly go over what comments do. Comments, as the name suggest, allow you to document your code in the script file. Like any other language, comments are parsed, or ran throughout the code, so you don't need to worry about comments having an effect on the code you right. Comments are very useful for documenting code, which can come in handy when working with others/looking at old code. Comments can be constructed in a singleline or multiline format. </p>
+<pre><code class="language-lua">-- This is a singleline comment. See how it stays on one line
+--[[ 
+  This is a multiline comment.
+  Notice how it spreads through separate lines?
+]]
+</code></pre>
+<p>Comments can be amazing, although too many can actually reduce readability. As a rule of thumb, don't comment redundantly, and don't comment too often unless you're willing to keep the comments updated as the code gets updated.</p>
+<pre><code class="language-lua">local x = 5 -- sets value of x to 5
+-- ^^ Above is a bad comment, reading the variable name tells us this already
+</code></pre>
+<p>In short, don't overcomment code. Use comments sparingly, and use them where they'll have the most effect. In the next chapter, we'll take a more in-depth look at <a href="./chapter_12_Datatypes.html">datatypes</a></p>
+<h1><a class="header" href="#data-types" id="data-types">Data types</a></h1>
+<p>One of the most fundamental things about Lua (and RLua by extension!) are data types and variables.</p>
+<p>The relationship between data types and variables can be thought of like a name tag and its content. An example would be giving a dog a nickname instead of calling the dog by it’s full name. You can call the nickname, and the dog would be what you’re calling. The benefits of this is that you can contain data in a short, user-friendly nickname so it’s easier to reference throughout your scripts.</p>
+<p>RLua has several different data types, we listed the simple/primitive types below.</p>
+<pre><code class="language-lua">local stringType = &quot;Hello&quot;
+local numberType = 0
+local booleanType = true
+local nilType = nil 
+</code></pre>
+<p>These 4 aren’t all the possible data types that RLua contains, but it’s a good starting point for learning. The other data types will be discussed in their own dedicated future chapters in the book, but we’ll focus on these four right now, due to them being essential and the building blocks to more advanced topics.</p>
+<p>These 4 types plus 3 more complex types make up <em>almost</em> everything.</p>
+<ul>
+<li>String
+<ul>
+<li>This data type represents text and are represented by text surrounded with <code>&quot; &quot;</code>, <code>' '</code>, or <code>[[ ]]</code></li>
+</ul>
+</li>
+<li>Number
+<ul>
+<li>This data type represents numbers and can contain decimals. </li>
+</ul>
+</li>
+<li>Boolean
+<ul>
+<li>This data type represents <code>true</code> or <code>false</code> and uses the keywords <code>true</code> and <code>false</code>. Think of it like a lightswitch</li>
+</ul>
+</li>
+<li>Nil
+<ul>
+<li>This data type represents the lack of data. It's very important to know that this datatype shows how there's no data attached.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#strings" id="strings">Strings</a></h2>
+<p>As we mentioned before, strings represent text. Strings can be represented by text surrounded by <code>&quot; &quot;</code>, <code>' '</code>, or <code>[[ ]]</code>. Here's a visual example of all the strings going at work.</p>
+<pre><code class="language-lua">local String1 = &quot;First String!&quot; 
+local String2 = 'Second String!'
+local String3 = [[Final String!]]
+</code></pre>
+<p>All of those are valid ways to create a string, although that doesn't mean we can mix and match them exactly. When creating a string, it's required to start and end the string with the same symbol, or otherwise it'll consider the string incomplete and error.</p>
+<p>So now that we know how to create strings, that natually creates more questions about the limits of strings. When creating strings, it's important to know what we can and can't do with them. A common issue is how to create multiline strings. A nice thing to know about <code>[[ ]]</code> is that it's multiline. </p>
+<pre><code class="language-lua">local FailedMultilineString = &quot;Oh no, 
+this is not multiline&quot; 
+
+local FailedMultilineString = 'Oh no,
+this also is not multiline'
+
+local CorrectMultilineString = [[Ok, this
+is much better!]]
+</code></pre>
+<p>Now that we know how to create multiline strings, we'll need to figure out how to contain string creation characters <code>[[]]</code>, <code>&quot; &quot;</code>, <code>' '</code> in strings. One method we can use is called escaping. This is done with the <code>\</code>(backslash)</p>
+<pre><code class="language-lua">local double = &quot;So then he said \&quot;Wow, this is escapism!\&quot;&quot;
+local single = 'So then he said &quot;Wow, this\'ll work too!&quot;'
+local AnotherEscapism = [[&quot;Wow&quot;, he said. &quot;I didn't know this would work&quot;]]
+print(single, double)
+</code></pre>
+<p>To summarize what the code does, it allows us to tell our code to ignore the upcoming lines. This allows us to put string symbols in strings without it ending off the string or creating a new one, causing an error. Below is a extensive list of ways you can incorporate escapism in code.</p>
+<ul>
+<li><code>\a</code> bell</li>
+<li><code>\b</code> back space</li>
+<li><code>\f</code> form feed</li>
+<li><code>\n</code> newline</li>
+<li><code>\r</code> carriage return</li>
+<li><code>\t</code> horizontal tab</li>
+<li><code>\v</code> vertical tab</li>
+<li><code>\\</code> backslash</li>
+<li><code>\&quot;</code> double quote</li>
+<li><code>\'</code> single quote</li>
+<li><code>\[</code> left square bracket</li>
+<li><code>\]</code> right square bracket</li>
+</ul>
+<p>Awesome! We've discussed multiline strings and having string symbols in strings, but what about combining strings? In the example below, we discuss a way to combine separate strings into 1 giant string.</p>
+<pre><code class="language-lua">local Hello = &quot;Hello, &quot;
+local World = &quot;World!&quot;
+
+local HelloWorld = Hello .. World
+</code></pre>
+<p><code>..</code>, otherwise known as concatenation, is an operator which can be used to connect two strings together. There are more to strings which you can read at <a href="https://developer.roblox.com/en-us/api-reference/lua-docs/string">https://developer.roblox.com/en-us/api-reference/lua-docs/string</a>.</p>
+<h2><a class="header" href="#number" id="number">Number</a></h2>
+<p>Numbers are argubably one of the most important datatypes within RLua. Alongside storing data as numbers, we can also perform mathmathical operations on numbers. Below are some quick but practical examples of performing math,.</p>
+<pre><code class="language-lua">local Sum = 5 + 3
+local Product = 5 * 3
+local Remainder = 5 - 3
+local Division = 6 / 3
+</code></pre>
+<p>Alongside being able to perform math operations using numbers, we can perform operations using variables that store numbers. Reminds you of algebra, doesn't it? Here's an example below:</p>
+<pre><code class="language-lua">local a = 6
+local b = 4
+
+local c = a * b + 5
+</code></pre>
+<p>Cool, isn't it? Besides the basic 4 operations, RLua also supports the following operations below. </p>
+<ul>
+<li><code>+</code> addition</li>
+<li><code>-</code> subtraction</li>
+<li><code>*</code> multiplication</li>
+<li><code>/</code> division</li>
+<li><code>%</code> modulus</li>
+<li><code>^</code> power</li>
+</ul>
+<p>RLua also follows the Order Of Operations (OOO). </p>
+<pre><code class="language-lua">local x = 5 * 2 + 2
+
+local y = 5 * (2 + 2)
+</code></pre>
+<p>The values of <code>x</code> and <code>y</code> are different because of the order of operations. There is much more you can do with numbers and you can check the <a href="https://developer.roblox.com/en-us/api-reference/lua-docs/math">standard math library</a></p>
+<h2><a class="header" href="#booleans" id="booleans">Booleans</a></h2>
+<p>Booleans are just values which represent <code>true</code> or <code>false</code> (or both...).</p>
+<pre><code class="language-lua">local trueBool = true
+local falseBool = false
+</code></pre>
+<p>Booleans are commonly used within if statements which will be covered in <a href="./ch01-05-control-flow.html">control flow</a>. All operators return booleans, think of things like <code>&gt;</code> and <code>==</code>. These are extensively used to see if an operation is true (or not).</p>
+<pre><code class="language-lua">local IsTrue = 5 &gt; 2
+local IsFalse = 5 &lt; 3 
+
+print(IsTrue)
+print(IsFalse)
+</code></pre>
+<h2><a class="header" href="#type-interaction" id="type-interaction">Type interaction</a></h2>
+<p>IN RLua, different types can have different interactions. </p>
+<pre><code class="language-lua">local str = &quot;1&quot;
+local num = 2
+
+local combo = str + num
+print(combo)
+</code></pre>
+<p>You might've thought that strings couldn't be added with numbers, and you would be correct. However, RLua has a type interaction system that allows numbers to interact </p>
+<pre><code class="language-lua">local str = &quot;a&quot;
+local num = 2
+
+local combo = str + num
+</code></pre>
+<p>This would cause an error along the lines of <code>attempt to perform arithmetic on a string value</code>. Errors like these happen whenever you try to perform addition on non-number values.</p>
+<h2><a class="header" href="#type-casting" id="type-casting">Type casting</a></h2>
+<p>You heard of the some functions like <code>tonumber</code> and possibly <code>tostring</code>. This is called explicit type casting. Its explicit as you have to write these functions. Lua also has <strong>implicit</strong> type casting. For example, the <code>&quot;1&quot; + 2</code> was implicit. We didn't have to tell Lua to convert the string to a number. Some more examples would be concatting a string and number.</p>
+<pre><code class="language-lua">local combo = &quot;Hello I am &quot; .. 100 .. &quot; years old!&quot;
+</code></pre>
+<p>The output would be <code>Hello I am &quot; .. 100 .. &quot; years old&quot;!</code></p>
+<p>In the next chapter, we'll be discussing if-statements, while loops, and general <a href="./chapter_13_Control_Flow.html">control flow</a>.</p>
+<h1><a class="header" href="#control-flow" id="control-flow">Control Flow</a></h1>
+<p>What if you need to compare something? What if you need to make sure that a mob drops loot after they die? What about making sure that a player has enough money to buy a sweet new item from the store? We learned about variable types and how to manipulate them, but how do we perform checks?</p>
+<p>Lucky for us, RLua comes with a convenient set of conventional statements. Statements in programming allow us to execute code depending on a <strong>condition’s return value</strong>. Before we go into any examples, we should go over what a truthy value is. A truthy value is a value which RLua considers to be true.</p>
+<p>These are falsely values</p>
+<ul>
+<li><code>nil</code></li>
+<li><code>false</code></li>
+</ul>
+<p>All other values are considered to be truthy. Now we can look at some simple examples which could be done with our logical operators.</p>
+<h2><a class="header" href="#if-statements" id="if-statements">If Statements</a></h2>
+<p>When we want to compare values, we'll often fall back on if statements. If statements allow us to compare values with each other, and choose what code to run. Sounds confusing, doesn't it? Here's an example to help visualize what if-statements look like practically. </p>
+<pre><code class="language-lua">local Five = 5
+local Four = 4 
+
+if Five &gt; Four == true then 
+  print(&quot;5 is bigger than 4!&quot;)
+end
+</code></pre>
+<p>When using if statements, we're comparing two values against each other. We can compare variables against each other, or compare variabes against a pre-defined value. In the example above, we compared the result of five being bigger than four. If it equaled true, the output would print (5 is bigger than 4). If statements are especially useful for comparing values and making sure we only run code when our conditions are met, but what if we want code to run if it isn't met?</p>
+<p>Often times, we'll want to have some code run when an if-statement fails, often for security or to let us know the code didn't reach it's first statement. To do this, we can add an else to our if-statement. Else isn't needed to construct an if-statement, but we can use it if our initial check fails. </p>
+<pre><code class="language-lua">local Five = 5
+local Four = 4
+
+if Five &lt; Four  then 
+  print(&quot;5 is smaller than 4!&quot;)
+else 
+  print(&quot;5 is bigger than 4&quot;!)
+end
+</code></pre>
+<p>Notice how only our last piece of code ran? An important thing to note about this is that <strong>both checks will never run</strong>. This is important to know, since it only checks if the first comparision is true or not. </p>
+<p>Ok, great, we know now how to use if-statements. Another useful fact about if statements is the <code>elseif</code>. When we want to do more than 1 check, we can string elseif's into our if statement.</p>
+<pre><code class="language-lua">local Five = 5
+
+if Five == 3 then
+  print(&quot;5 = 3&quot;)
+elseif Five == 4 then
+  print(&quot;5 = 4&quot;)
+elseif Five == 5 then
+  print(&quot;5 = 5&quot;)
+else 
+  print(&quot;Not known&quot;)
+end
+</code></pre>
+<p>This is especially useful for when we want to condense a bunch of checks into a single if-statement. </p>
+<h2><a class="header" href="#while-loops" id="while-loops">While Loops</a></h2>
+<p>Sometimes, we'll want a piece of code to constantly run. In RLua, we have a convenient way to have a check going. We can use <code>while loops</code>, a piece of code that repeats whatever is inside it until the condition is false, or the loop is manually broken. To show a visual example, here's a code sample. </p>
+<pre><code class="language-lua">while true do
+  print(&quot;Running&quot;)
+end
+</code></pre>
+<p>While true do loops run very fast, so performing heavy operations in a while loop will most likely crash your current console. To prevent this, we can add a delay, or wait() to our code to give it a very short break before running. </p>
+<pre><code class="language-lua">while true do
+  wait()
+  print(&quot;Running&quot;)
+end
+</code></pre>
+<p>Alongside while true do loops, we can replace the true with another conditional statement. In the statement below, we replaced the <code>true</code> part with our own conditional statement.</p>
+<pre><code class="language-lua">local Five = 5
+local Four = 4
+
+while Five &gt; Four do
+  print(&quot;Running&quot;)
+end
+</code></pre>
+<p>See? Our code still runs just fine. In the next chapter, we'll be discussing <a href="./chapter_14_Operators.html">operators</a> in more depth. </p>
+<h1><a class="header" href="#operators" id="operators">Operators</a></h1>
+<p>As discussed in <a href="./chapter_13_Control_Flow.html">Control Flow</a>, RLua has a lot of operators. Like any programming language, RLua allows you to conduct operations on datatypes. We can use operators in a variety of ways, including to compare, contrast, and connecting datatypes. In the rest of this chapter, we'll take a bit more time to properly discuss operators.</p>
+<h2><a class="header" href="#mathematical-operations" id="mathematical-operations">Mathematical Operations</a></h2>
+<p>Like any programming language, RLua allows you to perform mathematical operations on numbers. Simply said, You can add, subtract, multiply, divide, and do other math operations to numerical values. The most basic math operations in lua are multiplication, division, addition, and subtraction. To visualize this in code, I prepared code samples.</p>
+<p>There are more advanced mathematical operations in RLua, but these are the core visualizations that are meant to show how it would be represented in code, rather than going over all possibilities.</p>
+<pre><code class="language-lua">-- Mathematical Symbols in RLua
+
+local add = 5
+add = add + 5 -- Outputs 10
+
+local sub = 5
+sub = TestNumber - 5 -- Outputs 0
+
+local multi = 5
+multi = multi * 5 -- Outputs 25
+
+local div = 10
+div = div / 5 -- Outputs 2
+
+local mod = 5
+mod = mod % 5 -- Outputs 0
+</code></pre>
+<p>Great, now we know that numbers can be manipulated through math, but how is that useful to us? One example is that we can now scale parts using scripts! Don’t know what I mean? Let’s take a look at this code sample!</p>
+<pre><code class="language-lua">local part = &quot;I am a part&quot;
+
+local partX = 2
+local partY = 3
+local partZ = 4
+
+partX = partX * 2
+partY = partY * 3
+partZ = partZ * 1.5
+</code></pre>
+<p>The part would be moved in this imaginary sandbox. Like stated before, this section is for general programming concepts, which means things like part Instances are not going to be talked about.</p>
+<h2><a class="header" href="#relational-operations" id="relational-operations">Relational Operations</a></h2>
+<p>Besides math operations, RLua has relational operations. These are used for comparisons and will always result in <strong>true</strong> or <strong>false</strong>.</p>
+<ul>
+<li><code>==</code> Equal to</li>
+<li><code>~=</code> Not equal to.</li>
+</ul>
+<p>These two operations can be used to compare any two values. Along with these 2, there are these ones</p>
+<ul>
+<li><code>&lt;</code> Less than</li>
+<li><code>&gt;</code> Greater than</li>
+<li><code>&gt;=</code> Greater than or equal to</li>
+<li><code>&lt;=</code> Less than or equal to</li>
+</ul>
+<p>Lets go and look at some code.</p>
+<pre><code class="language-lua">print(5 == 2) -- false
+
+print(5 ~= 2) -- true
+
+print(2 &lt; 5) -- false
+
+print(5 &gt; 5) -- false
+
+print(5 &gt;= 5) -- true
+
+print(3 &lt;= 2) -- false
+</code></pre>
+<p>You may ask, what are these used for? Relational operators are most commonly used to check the relationship between two operations. These are most commonly seen in if-statements</p>
+<h2><a class="header" href="#logical-operators" id="logical-operators">Logical operators</a></h2>
+<p>RLua also has logical operators. These are things like <code>and</code> and <code>not</code>. Here are some of them.</p>
+<ul>
+<li><code>and</code> if expr<strong>1</strong> is true and expr<strong>2</strong> is also true, return expr<strong>2</strong> else return <code>nil</code></li>
+<li><code>or</code> if expr<strong>1</strong> is true, return expr<strong>1</strong>, else return expr<strong>2</strong></li>
+<li><code>not</code> if expr<strong>1</strong> is true, return false, else return true</li>
+</ul>
+<p>Lets show some examples using relational operators as well.</p>
+<pre><code class="language-lua">print(5 &gt; 2 and '5 is greater then 2' or '5 is less then 2')
+
+print(5 &gt; 2 or 'Previous expression was false')
+
+print(not 5 &gt; 2 and '5 is not greater then 2' or '5 is not less then 2')
+</code></pre>
+<p>If you used other languages, you can think of these like <code>a ? b : c</code>. In RLua that would be <code>a and b or c</code>.</p>
+<p>We can combine these operators together and make even larger expressions.</p>
+<p>Usually you would want to use these in place of simple if statements.</p>
+<h1><a class="header" href="#chapters-21-24-review" id="chapters-21-24-review">Chapters 2.1-2.4 Review</a></h1>
+<p>In this chapter, we'll be taking a deeper dive into what we've learned from the previous chapters with Q&amp;A's + Quizzes! To view and see the answers to these questions, feel free to refer to the <a href="./solution-chapter_15_review.html">solutions tab</a> to check your answers. We strongly suggest trying to answer these on your own, but it's ok if you can't but still want the answer. </p>
+<h2><a class="header" href="#qa-segment" id="qa-segment">Q&amp;A Segment</a></h2>
+<p>Q1: What is a variable?</p>
+<ul>
+<li>A: A named container used to store data.</li>
+<li>B: A datatype</li>
+<li>C: Something used to document code</li>
+</ul>
+<p>Q2: What's the purpose of comments?</p>
+<ul>
+<li>A: To store data</li>
+<li>B: To troubleshoot code and sliently handle errors</li>
+<li>C: To document code </li>
+</ul>
+<p>Q3: What does nil represent?</p>
+<ul>
+<li>A: The lack of a value</li>
+<li>B: 0</li>
+<li>C: An error</li>
+</ul>
+<p>Q4: How are multiline strings formed?</p>
+<ul>
+<li>A: <code>&quot;text </code>
+<code>here&quot;</code></li>
+<li>B: <code>[[text</code> 
+<code>here]]</code></li>
+<li>C: <code>'So then he said &quot;Wow, this\'</code>
+<code>ll work too!&quot;'</code></li>
+</ul>
+<p>Q5: How would we check 3+ conditions in an if-statement?</p>
+<ul>
+<li>A: elseif</li>
+<li>B: else</li>
+<li>C: All of the above</li>
+</ul>
+<h2><a class="header" href="#next-segment" id="next-segment">Next segment</a></h2>
+<p>Feeling good about what you've learned? Amazing, be sure to head on to the next chapter, <a href="./chapter_21_Function.html">functions</a>.</p>
+<h1><a class="header" href="#more-programming-concepts" id="more-programming-concepts">More Programming Concepts</a></h1>
+<p>In the previous chapters, we went over the core fundamentals of programming, including <a href="chapter_11_Variables.html">variables</a>, <a href="chapter_12_Datatypes.html">datatypes</a>, and <a href="chapter_13_Control_Flow.html">control flow</a>. In the next batch of chapters, we'll go over the final &quot;beginner&quot; concepts, before moving on into practical development. This concepts include functions, loops, tables, and other useful values. </p>
+<p>These are still relatively beginner-based, but are slightly more advanced due to requiring knowledge of what we've learnt before. If you don't have a solid grasp of what we've discussed previously, we strongly recommend going back and taking a quick review, then coming back when you feel a bit more comfortable.</p>
+<p>Feeling confident? Great! Let's go into our next chapter, <a href="./chapter_21-Functions.html">functions</a>.</p>
+<h1><a class="header" href="#functions" id="functions">Functions</a></h1>
+<p>Functions are blocks of code that can be defined once, and then executed by using a command. Functions are one of the key principals of D.R.Y (Don't Repeat Yourself). They allow us to reuse code, and execute code in different areas of our script after our function has been defined. </p>
+<p>Functions are most notably defined by a name, followed directly by parathesis <code>()</code> <code>EX: wait()</code>. To define a function, we'll want to start off with the keyword <code>function</code>, follow by the function name, and then end it with parathesis <code>()</code>. After defining that, we'll want to close our function with the <code>end</code> keyword.</p>
+<pre><code class="language-lua">function AddNumbers()
+    print(&quot;Running&quot;)
+end
+</code></pre>
+<p>Just like that, we've defined a function! Anything between the <code>()</code> and the <code>end</code> will be considered apart of the function, and will execute when called. If we run this statement of code, you might notice something strange. Why doesn't the function run?</p>
+<h2><a class="header" href="#function-calling" id="function-calling">Function Calling</a></h2>
+<p>When working with functions, it's important to know that they are not <code>self-executing</code>. This means that the function will not execute until it's called upon, After defining a function, we can execute it by simply typing the function's name followed by parathesis <code>()</code>.</p>
+<pre><code class="language-lua">function AddNumbers()
+    print(&quot;Running&quot;)
+end
+
+AddNumbers()
+</code></pre>
+<p>The benefit of being able to call a function to run is that it gives us much more flexability when writing and executing code. All we need to do is call the function after it's been defined, and we can run that code anywhere. We can even run the function multipile times!</p>
+<pre><code class="language-lua">function AddNumbers()
+    print(&quot;Running&quot;)
+end
+
+AddNumbers()
+AddNumbers()
+AddNumbers()
+AddNumbers()
+AddNumbers()
+</code></pre>
+<p>Another important thing to note is being able to execute functions when an event is triggered. This'll be explained more in a future chapter, but think of events as signals whenever something happens. Here's a code sample for you, you don't need to know exactly what's happening, except that the function is being executed everytime a player joins the game.</p>
+<pre><code class="language-lua">local Players = game:GetService(&quot;Players&quot;)
+
+function OnPlayerAdded() -- runs whenever a player joins the game
+    print(&quot;New player has joined the game!&quot;)
+end
+
+Players.PlayerAdded:Connect(OnPlayerAdded)
+</code></pre>
+<h2><a class="header" href="#function-parameters--arguments" id="function-parameters--arguments">Function Parameters &amp; Arguments</a></h2>
+<p>Alongside being able to call functions at any point after they've been defined, we can also program our functions to expect parameters, and pass arguments through them. Confused? Here's an visual example of a function with parameters. We program our function to accept 2 parameters, add them together, and print out the result. When our function is called, we pass 2 and 4 as arguments.</p>
+<pre><code class="language-lua">function AddNumbers(number1, number2) -- parameters
+    print(number1 + number2)
+end
+
+AddNumbers(2, 4) -- arguments
+</code></pre>
+<p>When passing arguments to a function, it's important to separate them with the usage of commas. It's important to know that you're the one in control when writing functions with custom arguments. Not all parameters of a function need to be used, but forgetting to pass an argument while not having a default value in your code will error.</p>
+<p>Alongside making sure arguments are passed properly, you need to make sure that the arguments are in proper order! Order matters when passing arguments, so make sure you pass them properly!</p>
+<h2><a class="header" href="#functions-and-return" id="functions-and-return">Functions and return</a></h2>
+<p>While functions can receive data and act upon it, it's equally as important to know functions can send back data. By using the keyword <code>return</code>, followed by data, we can retrive the &quot;result&quot; of a function and set that to a variable.</p>
+<pre><code class="language-lua">function AddNumbers(number1, number2) 
+    local Result = number1 + number2
+    return Result
+end
+
+local Sum = AddNumbers(2, 4)
+print(Sum)
+</code></pre>
+<p>As a note, it's important to know NOT to type anything after your return. Return essentially stops the current scope, and any code after that will error. With RLua, we can also return multiple values with return.</p>
+<pre><code class="language-lua">function AddAndSubtractNumbers(number1, number2)
+    local Sum = number1 + number2
+    local Difference = number1 - number2
+    return Sum, Difference
+end
+
+local Sum, Diference = AddAndSubtractNumbers(8, 6)
+print(Sum, Difference)
+</code></pre>
+<h2><a class="header" href="#recursion" id="recursion">Recursion</a></h2>
+<p>Ever tried to run a function in a function? That doesn't sound too weird, right? What if that function was the same function you were typing? Confused? You know the drill, here's an example! </p>
+<pre><code class="language-lua">function Recursion()
+    print(&quot;Ran&quot;)
+    Recursion()
+end
+
+Recursion()
+</code></pre>
+<p>Surprisingly, that works! It'll continue to run the function until a <code>stack overflow</code> happens, which basically means that you're running too many functions too quickly.</p>
+<h2><a class="header" href="#functions--events" id="functions--events">Functions &amp; Events</a></h2>
+<p>Just like how we can call functions manually, we can also call functions when an event is triggered. We won't go into too much detail about events and listeners, that's saved for a future chapter. We can automate the handling of events by attaching a &quot;listener&quot; function which listens for whenever the event is fired, and preceeds to run code. It's important to know that parameters and arguments still work here, and some built-in events can pass arguments automatically.</p>
+<p>In our example below, we make use of <code>:Connect</code> to connect a function to the <code>PlayerAdded</code> event, so that the function will run everytime the event is fired.</p>
+<pre><code class="language-lua">local Players = game:GetService(&quot;Players&quot;) -- allows us to get the PlayerAdded event
+
+function OnPlayerAdded(player) -- this parameter is automatically passed by the PlayerAdded event.
+    print(player.Name .. &quot; has joined the game!&quot;)
+end
+
+Players.PlayerAdded:Connect(OnPlayerAdded)
+</code></pre>
+<h2><a class="header" href="#anonymous-functions" id="anonymous-functions">Anonymous Functions</a></h2>
+<p>Sometimes, we don't need to define a name with our functions. This is called an <code>Anonymous Function</code>, and we can make the most use of this within events or other functions. To visualize, here's our PlayerAdded event, but with an anonymous function attached to it.</p>
+<pre><code class="language-lua">local Players = game:GetService(&quot;Players&quot;) -- allows us to get the PlayerAdded event
+
+Players.PlayerAdded:Connect(function(player) -- we can still get parameters from anonymous functions!
+    print(player.Name .. &quot; has joined the game!&quot;)
+end) 
+</code></pre>
+<p>Functions are extremely useful, but what about repeating code? In the next chapter, we'll cover <a href="./chapter_22_Loops.html">loops</a>. While there's varying types of loops, all of them have 1 similar trait, that they repeat blocks of code.</p>
+<h1><a class="header" href="#loops" id="loops">Loops</a></h1>
+<p>The need to repeat code appears a lot. Whether it's repeating the same code to a lot of objects, or running a function until a condition is met, we'll want to understand loops.</p>
+<p>In RLua, there are 3 types of loops, <code>while</code> , <code>for</code> , and <code>repeat</code> loops. Each of these loops has varying uses, but they all allow you to repeat sections of code. There's techinally a 4th loop called <code>recursion</code> , but we discussed that in <a href="./chapter_21_Functions.html">functions</a>, and this chapter will only lightly go over recusion.</p>
+<h2><a class="header" href="#while-loops-1" id="while-loops-1">While Loops</a></h2>
+<p>Sometimes, we'll want a piece of code to constantly run. In RLua, we have a convenient way to have a check going. We can use <code>while loops</code> , a piece of code that repeats whatever is inside it until the condition is false, or the loop is manually broken. To show a visual example, here's a code sample. </p>
+<pre><code class="language-lua">while true do
+  print(&quot;Running&quot;)
+end
+</code></pre>
+<p>While true do loops run very fast, so performing heavy operations in a while loop will most likely crash your current console. To prevent this, we can add a delay, or wait() to our code to give it a very short break before running. </p>
+<pre><code class="language-lua">while true do
+  wait()
+  print(&quot;Running&quot;)
+end
+</code></pre>
+<p>Alongside while true do loops, we can replace the true with another conditional statement. In the statement below, we replaced the <code>true</code> part with our own conditional statement.</p>
+<pre><code class="language-lua">local Five = 5
+local Four = 4
+
+while Five &gt; Four do
+  print(&quot;Running&quot;)
+end
+
+print(&quot;Continuing!&quot;)
+</code></pre>
+<p>Notice how we never get to the second print statement in our code? Another thing to note is that while loops <em>yield</em> the script, much like the <em>wait()</em> function. This means that anything under the while loop won't continue until the while loop is broken. </p>
+<p>With while loops, we can also break them manually by using the <code>break</code> keyword. When putting this word in a while loop, it'll break the while loop and continue to run the rest of the script. </p>
+<pre><code class="language-lua">local Number = 1
+
+while true do 
+    if Number &gt;= 10 then
+        break
+    end
+
+    wait(1)
+    Number = Number + 1
+    print(Number)
+end
+
+print(&quot;While loop ended, continuing on with the rest of the script!&quot;)
+</code></pre>
+<p>You'll notice how the second print statement now runs, that's because of our if-statement at the top of the loop, which checks if Number is greater or equal to 10. If it is, we break the current while-loop and proceed with the rest of our code. </p>
+<h2><a class="header" href="#for-loops" id="for-loops">For loops</a></h2>
+<p>For loops are similar to while loops, in the sense that they repeat code. The fundamental difference between these two loops is the application that they're used in. While loops can be used to repeat code until a condition is met, while for loops allow you to run commands or a group of commands a set amount of times. </p>
+<p>All for loops have a control variable, start, end, and an optional incremental value. In the example below, the count is</p>
+<pre><code class="language-lua">local count = 1
+local endValue = 5
+
+for count, endValue do
+    print(count)
+end
+
+print(&quot;For Loop!&quot;)
+</code></pre>
+<p>You might notice the count value going up, Unlike while loops, once it's done iterating, it'll continue to run the rest of the code. For loops can also contain an optional increment value (defaults to 1), which can either count up or down depending on if it's a positive or negative value. As a note, <code>index</code> will be used instead of <code>count</code> for the rest of this book.</p>
+<pre><code class="language-lua">local count = 1
+local endValue = 5
+local incrementValue = 0.5
+
+for count, endValue, incrementValue do
+    print(count)
+end
+
+print(&quot;For Loop!&quot;)
+</code></pre>
+<p>Pretty useful, huh? For Loops can also iterate through <strong>tables</strong> (explained more in <a href="./chapter_23_tables.html">this chapter about tables</a>). To summarize the concept of tables, it's basically a container that we can use to store lots of data. The difference between variables and data is how we're able to access mass amounts of data from a table. You don't need to have a strong understanding of tables for this, we'll go in more depth later. </p>
+<p>For loops can iterate through all the objects in a table, and use those values. Guess what we do in the example below?</p>
+<pre><code class="language-lua">local TestTable = {5, 4, 6, 12, 50}
+
+for index, number in pairs(TestTable) do
+  print(&quot;Original number: &quot; .. number)
+  number = number + 5
+  print(&quot;Output: &quot; .. number)
+end
+
+print(&quot;Numbers finished adding&quot;)
+</code></pre>
+<p>In this example, we run a series of short commands. When iterating through an <code>array</code> (a special type of table), we can get the placement of the array, and the value <code>(index = placement, number = value)</code> . We use the value <strong>number</strong>, print it's original value, add it by 5, and then print the new value. </p>
+<h2><a class="header" href="#repeat-loops" id="repeat-loops">Repeat Loops</a></h2>
+<p>Repeat loops are similar to While Loops, except that the conditional is evaulated after the code is ran. To understand the differences, we'll have to look at a way repeat loops are structured.</p>
+<pre><code class="language-lua">repeat
+-- code here
+until conditional
+</code></pre>
+<p>As shown above, repeat loops will always run <code>-- code here</code> , then check if the conditional is met. Like the rest of the loops discussed here, they yield scripts until they're broken. For a more detailed example of repeat loops, read below.</p>
+<pre><code class="language-lua">local repeatTries = 5
+local currentTries = 0
+
+repeat
+  currentTries = currentTries + 1
+  print(currentTries)
+  wait(1)
+until currentTries == repeatTries
+
+print(&quot;Exceeded maximum tries.&quot;)
+</code></pre>
+<p>Like all other loops, we can forcibly end it by using the <code>break</code> keyword. </p>
+<pre><code class="language-lua">local repeatTries = 5
+local currentTries = 0
+
+repeat
+  currentTries = currentTries + 2
+  print(currentTries)
+  wait(1)
+
+  if currentTries &gt; repeatTries then
+    print(&quot;loop broken&quot;)
+    break
+  end
+until currentTries == repeatTries
+
+print(&quot;Exceeded maximum tries.&quot;)
+</code></pre>
+<p>In the next chapter, we'll be discussing <a href="chapter_23_Tables.html">tables</a>, a way to store mass amounts of data in a easy to reference object.</p>
+<h1><a class="header" href="#21-24-solutions" id="21-24-solutions">2.1-2.4 Solutions</a></h1>
+<p>Solutions for <a href="./chapter_15_Review">chapter 15</a></p>
+<h2><a class="header" href="#qa-segment-1" id="qa-segment-1">Q&amp;A Segment</a></h2>
+<p>Q1: What is a variable?
+A1: A: A custom that can contain data.</p>
+<p>Q2: What's the purpose of comments?
+A2: C: To document code </p>
+<p>Q3: What does nil represent?
+A3: A: The lack of a value</p>
+<p>Q4: How are multiline strings formed?
+A4: B: <code>[[text</code> 
+<code>here]]</code></p>
+<p>Q5: How would we check 3+ conditions in an if-statement?
+A5: A: elseif</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
